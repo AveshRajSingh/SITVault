@@ -8,7 +8,6 @@ import { scheduleCleanup } from './utilities/fileCleanup.js';
 import isSuspended from './middlewares/isSuspended.js';
 import verifyUser from './middlewares/verifyUser.js';
 
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
