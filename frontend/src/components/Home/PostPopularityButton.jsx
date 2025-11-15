@@ -63,8 +63,8 @@ const PostPopularityButton = ({
         flex items-center ${currentSize.gap} ${currentSize.button}
         rounded-xl transition-all duration-200 outline
         ${isLiked 
-          ? 'bg-orange-50 text-orange-500 hover:!bg-orange-100 border-orange-400' 
-          : 'text-gray-500 hover:!text-orange-500 transition-colors bg-gray-50'
+          ? 'bg-green-50 text-green-500 hover:!bg-green-100 border-green-400' 
+          : 'text-gray-500 hover:!text-green-500 transition-colors bg-gray-50'
         }
         disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer}
         ${className}
@@ -72,7 +72,7 @@ const PostPopularityButton = ({
       title={isAuthenticated ? (isAdminVerified ? (isLiked ? 'remove Popularity' : 'add Popularity'): "you are not verified yet" ) : 'Login to add popularity'}
     >
       {isLiked ? (
-        <FaStar className={`${currentSize.icon} text-orange-500`} />
+        <FaStar className={`${currentSize.icon} text-green-500`} />
       ) : (
         <FaRegStar className={currentSize.icon} />
       )}

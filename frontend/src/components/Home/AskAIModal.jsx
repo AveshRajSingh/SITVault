@@ -149,9 +149,9 @@ Your response:
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 animate-fade-in p-4">
       <div className="bg-white rounded-xl shadow-2xl w-full max-w-3xl h-[85vh] flex flex-col">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 bg-gradient-to-r from-orange-50 to-orange-50">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 bg-gradient-to-r from-green-50 to-green-50">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-gradient-to-r from-orange-500 to-orange-500 rounded-lg">
+            <div className="p-2 bg-gradient-to-r from-green-500 to-green-500 rounded-lg">
               <FaRobot className="text-white" size={20} />
             </div>
             <div>
@@ -170,7 +170,7 @@ Your response:
         {/* Post Preview */}
         <div className="px-6 py-3 bg-gray-50 border-b border-gray-200">
           <div className="flex items-start gap-2">
-            <span className="text-xs font-semibold text-orange-600 uppercase">{post.tag}</span>
+            <span className="text-xs font-semibold text-green-600 uppercase">{post.tag}</span>
             <span className="text-xs text-gray-400">•</span>
             <span className="text-xs text-gray-600">by {post.author?.name || 'Anonymous'}</span>
           </div>
@@ -189,7 +189,7 @@ Your response:
               <div
                 className={`max-w-[80%] ${
                   msg.role === 'user'
-                    ? 'bg-gradient-to-r from-orange-500 to-orange-500 text-white rounded-2xl rounded-tr-sm'
+                    ? 'bg-gradient-to-r from-green-500 to-green-500 text-white rounded-2xl rounded-tr-sm'
                     : msg.isError
                     ? 'bg-red-50 text-red-800 border border-red-200 rounded-2xl rounded-tl-sm'
                     : 'bg-gray-100 text-gray-800 rounded-2xl rounded-tl-sm'
@@ -203,7 +203,7 @@ Your response:
                 ) : (
                   <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</p>
                 )}
-                <div className={`text-xs mt-1 ${msg.role === 'user' ? 'text-orange-100' : 'text-gray-500'}`}>
+                <div className={`text-xs mt-1 ${msg.role === 'user' ? 'text-green-100' : 'text-gray-500'}`}>
                   {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                 </div>
               </div>
@@ -214,7 +214,7 @@ Your response:
             <div className="flex justify-start">
               <div className="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3">
                 <div className="flex items-center gap-2">
-                  <FaSpinner className="animate-spin text-orange-600" size={14} />
+                  <FaSpinner className="animate-spin text-green-600" size={14} />
                   <span className="text-sm text-gray-600">AI is thinking...</span>
                 </div>
               </div>
@@ -233,7 +233,7 @@ Your response:
                 <button
                   key={idx}
                   onClick={() => handleQuickQuestion(q)}
-                  className="text-xs px-3 py-1.5 bg-white border border-orange-200 text-orange-700 rounded-full hover:bg-orange-50 transition-colors"
+                  className="text-xs px-3 py-1.5 bg-white border border-green-200 text-green-700 rounded-full hover:bg-green-50 transition-colors"
                 >
                   {q}
                 </button>
@@ -252,7 +252,7 @@ Your response:
                 onChange={(e) => setQuestion(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Ask a question about this post... (Press Enter to send)"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 resize-none outline-none text-sm"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 resize-none outline-none text-sm"
                 rows="2"
                 disabled={isLoading}
               />
@@ -260,7 +260,7 @@ Your response:
             <button
               onClick={handleAskAI}
               disabled={!question.trim() || isLoading}
-              className="flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-orange-500 to-orange-500 text-white rounded-lg hover:from-orange-600 hover:to-orange-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+              className="flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-green-500 to-green-500 text-white rounded-lg hover:from-green-600 hover:to-green-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium"
             >
               {isLoading ? (
                 <FaSpinner className="animate-spin" size={16} />

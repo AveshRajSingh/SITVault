@@ -236,9 +236,9 @@
   color-scheme: light !important;
 }
 
-/* Ensure orange backgrounds stay light */
-.post-container .bg-orange-50 {
-    background-color: #fff7ed !important; /* orange-50 */
+/* Ensure green backgrounds stay light */
+.post-container .bg-green-50 {
+    background-color: #fff7ed !important; /* green-50 */
 }
 
 /* Ensure post cards remain light themed */

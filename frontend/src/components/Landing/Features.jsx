@@ -46,7 +46,7 @@ function Features() {
       description:
         "Access a comprehensive library of educational resources, tutorials, and study materials curated by the community.",
       icon: <FaBookOpen />,
-      color: "bg-orange-400/20",
+      color: "bg-green-400/20",
     },
     {
       title: "Contact Admin System",
@@ -124,7 +124,7 @@ function Features() {
         {/* Call to Action */}
         <Link to={"/login"}>
           <div className="text-center mt-16">
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-600 to-teal-600 text-white px-8 py-4 rounded-full font-Jost font-semibold text-lg hover:from-orange-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl">
+            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-green-600 to-teal-600 text-white px-8 py-4 rounded-full font-Jost font-semibold text-lg hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl">
               <span>Experience These Features</span>
               <FaRocket className="text-xl" />{" "}
               {/* Replaced emoji with React Icon */}

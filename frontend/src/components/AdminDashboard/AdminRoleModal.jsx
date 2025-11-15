@@ -68,14 +68,14 @@ const AdminRoleModal = ({
             <div className="min-w-0 flex-1">
               <Link 
                 to={`/profile/${user.username}`}
-                className="font-semibold text-gray-800 hover:text-orange-600 transition-colors text-sm md:text-base truncate block"
+                className="font-semibold text-gray-800 hover:text-green-600 transition-colors text-sm md:text-base truncate block"
               >
                 {user.fullName}
               </Link>
               <p className="text-xs md:text-sm text-gray-600 truncate">
                 <Link 
                   to={`/profile/${user.username}`}
-                  className="hover:text-orange-600 transition-colors"
+                  className="hover:text-green-600 transition-colors"
                 >
                   @{user.username}
                 </Link> • {user.email}
@@ -87,7 +87,7 @@ const AdminRoleModal = ({
             <p className="text-sm text-gray-600 text-center">Only Super Admins can manage roles.</p>
           ) : isTargetSuper ? (
             <div className="text-center text-sm text-gray-600">
-              <FaCrown className="inline text-orange-500 mr-1" /> This user is already a Super Admin.
+              <FaCrown className="inline text-green-500 mr-1" /> This user is already a Super Admin.
             </div>
           ) : (
             <div className="space-y-3">
@@ -134,11 +134,11 @@ const AdminRoleModal = ({
               <button
                 onClick={() => onCreateAdmin('superadmin')}
                 disabled={creating}
-                className="w-full flex items-center justify-between p-3 md:p-4 border border-orange-200 rounded-lg hover:border-orange-300 hover:bg-orange-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                className="w-full flex items-center justify-between p-3 md:p-4 border border-green-200 rounded-lg hover:border-green-300 hover:bg-green-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 <div className="flex items-center space-x-3">
-                  <div className="bg-orange-100 p-2 rounded-lg flex-shrink-0">
-                    <FaCrown className="text-orange-600" size={16} />
+                  <div className="bg-green-100 p-2 rounded-lg flex-shrink-0">
+                    <FaCrown className="text-green-600" size={16} />
                   </div>
                   <div className="text-left">
                     <h5 className="font-semibold text-gray-800 text-sm md:text-base">Super Admin</h5>
@@ -146,7 +146,7 @@ const AdminRoleModal = ({
                   </div>
                 </div>
                 {creating && (
-                  <FaSpinner className="animate-spin text-orange-600 flex-shrink-0" size={14} />
+                  <FaSpinner className="animate-spin text-green-600 flex-shrink-0" size={14} />
                 )}
               </button>
             </div>

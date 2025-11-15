@@ -19,7 +19,7 @@ const ActionButtons = ({ user, isAdmin, onLogout, showDialog }) => {
         {isAdmin && (
           <Link
             to="/admin-dashboard"
-            className="flex-1 flex items-center justify-center gap-2 bg-orange-400 text-white px-3 py-2.5 rounded-lg text-sm font-medium hover:bg-orange-500 transition-all duration-200 shadow-sm"
+            className="flex-1 flex items-center justify-center gap-2 bg-green-400 text-white px-3 py-2.5 rounded-lg text-sm font-medium hover:bg-green-500 transition-all duration-200 shadow-sm"
           >
             <FiShield size={14} />
             <span>Admin Panel</span>

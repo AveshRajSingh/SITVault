@@ -12,8 +12,8 @@ const Navigation = () => {
         to="/home"
         className={({ isActive }) =>
           `${
-            isActive ? "text-orange-400" : "text-gray-600"
-          } hover:text-orange-400 transition-colors duration-300 ease-in-out`
+            isActive ? "text-green-400" : "text-gray-600"
+          } hover:text-green-400 transition-colors duration-300 ease-in-out`
         }
       >
         Home
@@ -23,8 +23,8 @@ const Navigation = () => {
         to="/resources"
         className={({ isActive }) =>
           `${
-            isActive ? "text-orange-400" : "text-gray-600"
-          } hover:text-orange-400 transition-colors duration-300 ease-in-out`
+            isActive ? "text-green-400" : "text-gray-600"
+          } hover:text-green-400 transition-colors duration-300 ease-in-out`
         }
       >
         Resources
@@ -34,8 +34,8 @@ const Navigation = () => {
         to="/syllabus"
         className={({ isActive }) =>
           `${
-            isActive ? "text-orange-400" : "text-gray-600"
-          } hover:text-orange-400 transition-colors duration-300 ease-in-out`
+            isActive ? "text-green-400" : "text-gray-600"
+          } hover:text-green-400 transition-colors duration-300 ease-in-out`
         }
       >
         Syllabus
@@ -45,8 +45,8 @@ const Navigation = () => {
         to="/contact-admin"
         className={({ isActive }) =>
           `${
-            isActive ? "text-orange-400" : "text-gray-600"
-          } hover:text-orange-400 transition-colors duration-300 ease-in-out`
+            isActive ? "text-green-400" : "text-gray-600"
+          } hover:text-green-400 transition-colors duration-300 ease-in-out`
         }
       > 
         Contact

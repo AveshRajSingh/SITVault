@@ -108,20 +108,20 @@ function Signup() {
   // Show loading while checking auth status
   if (authLoading) {
     return (
-      <div className="font-Jost flex h-screen justify-center items-center text-gray-600 bg-orange-100/30">
+      <div className="font-Jost flex h-screen justify-center items-center text-gray-600 bg-green-100/30">
         <div className="text-lg">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="font-Jost flex h-screen justify-center items-center text-gray-600 bg-orange-100/30">
-      <div className="bg-white p-6 px-8 rounded-lg border min-w-[90%] sm:min-w-[70%] md:min-w-[50%] lg:min-w-[35%] border-orange-400 shadow-lg">
-        <div className="font-Saira text-3xl text-orange-400 text-center font-medium">
+    <div className="font-Jost flex h-screen justify-center items-center text-gray-600 bg-green-100/30">
+      <div className="bg-white p-6 px-8 rounded-lg border min-w-[90%] sm:min-w-[70%] md:min-w-[50%] lg:min-w-[35%] border-green-400 shadow-lg">
+        <div className="font-Saira text-3xl text-green-400 text-center font-medium">
           <span className="text-3xl md:text-4xl text-gray-600 font-Saira font-bold">
             SIT
           </span>
-          <span className="text-3xl md:text-4xl text-orange-400 font-Saira font-bold">
+          <span className="text-3xl md:text-4xl text-green-400 font-Saira font-bold">
             Vault
           </span>
         </div>
@@ -149,7 +149,7 @@ function Signup() {
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleInputChange}
-                      className="bg-gray-50 caret-orange-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-orange-400 focus:shadow-lg shadow-orange-400/10"
+                      className="bg-gray-50 caret-green-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-green-400 focus:shadow-lg shadow-green-400/10"
                       type="text"
                       placeholder="eg: John/Jane"
                       required
@@ -165,7 +165,7 @@ function Signup() {
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleInputChange}
-                      className="bg-gray-50 caret-orange-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-orange-400 focus:shadow-lg shadow-orange-400/10"
+                      className="bg-gray-50 caret-green-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-green-400 focus:shadow-lg shadow-green-400/10"
                       type="text"
                       placeholder="eg: Doe"
                       required
@@ -182,7 +182,7 @@ function Signup() {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="bg-gray-50 caret-orange-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-orange-400 focus:shadow-lg shadow-orange-400/10"
+                    className="bg-gray-50 caret-green-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-green-400 focus:shadow-lg shadow-green-400/10"
                     type="email"
                     placeholder="eg: johndoe@example.com"
                     required
@@ -199,7 +199,7 @@ function Signup() {
                       name="rollNo"
                       value={formData.rollNo}
                       onChange={handleInputChange}
-                      className="bg-gray-50 caret-orange-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-orange-400 focus:shadow-lg shadow-orange-400/10"
+                      className="bg-gray-50 caret-green-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-green-400 focus:shadow-lg shadow-green-400/10"
                       type="text"
                       placeholder="eg: 22CSE08"
                       required
@@ -215,7 +215,7 @@ function Signup() {
                       name="gender"
                       value={formData.gender}
                       onChange={handleInputChange}
-                      className="bg-gray-50 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-orange-400 focus:shadow-lg shadow-orange-400/10"
+                      className="bg-gray-50 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-green-400 focus:shadow-lg shadow-green-400/10"
                       required
                       disabled={loading}
                     >
@@ -227,7 +227,7 @@ function Signup() {
                   </div>
                 </div>
                 <button type="submit" disabled={loading}>
-                  <div className="bg-orange-400 shadow-md hover:shadow-lg font-Saira text-lg sm:text-xl text-white px-4 py-2 rounded-md mt-2 hover:bg-orange-500 transition-all duration-200 ease-in-out cursor-pointer">
+                  <div className="bg-green-400 shadow-md hover:shadow-lg font-Saira text-lg sm:text-xl text-white px-4 py-2 rounded-md mt-2 hover:bg-green-500 transition-all duration-200 ease-in-out cursor-pointer">
                     Next
                   </div>
                 </button>
@@ -243,7 +243,7 @@ function Signup() {
                     name="username"
                     value={formData.username}
                     onChange={handleInputChange}
-                    className="bg-gray-50 caret-orange-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-orange-400 focus:shadow-lg shadow-orange-400/10"
+                    className="bg-gray-50 caret-green-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-green-400 focus:shadow-lg shadow-green-400/10"
                     type="text"
                     placeholder="Enter a username"
                     required
@@ -255,7 +255,7 @@ function Signup() {
                     Password:
                   </label>
                   <input
-                    className="bg-gray-50 caret-orange-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-orange-400 focus:shadow-lg shadow-orange-400/10"
+                    className="bg-gray-50 caret-green-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-green-400 focus:shadow-lg shadow-green-400/10"
                     id="password"
                     name="password"
                     value={formData.password}
@@ -271,7 +271,7 @@ function Signup() {
                     Confirm Password:
                   </label>
                   <input
-                    className={`bg-gray-50 caret-orange-400 px-4 py-2 rounded-md outline-none border focus:shadow-lg shadow-orange-400/10 ${formData.confirmPassword && formData.confirmPassword !== formData.password ? 'border-red-500 focus:border-red-500 bg-red-100' : 'border-gray-300 focus:border-orange-400'}`}
+                    className={`bg-gray-50 caret-green-400 px-4 py-2 rounded-md outline-none border focus:shadow-lg shadow-green-400/10 ${formData.confirmPassword && formData.confirmPassword !== formData.password ? 'border-red-500 focus:border-red-500 bg-red-100' : 'border-gray-300 focus:border-green-400'}`}
                     id="confirmPassword"
                     name="confirmPassword"
                     value={formData.confirmPassword}
@@ -296,7 +296,7 @@ function Signup() {
                     </div>
                   </button>
                   <button type="submit" disabled={loading}>
-                    <div className={`${loading ? 'bg-gray-400' : 'bg-orange-400 hover:bg-orange-500'} shadow-md hover:shadow-lg font-Saira text-lg sm:text-xl text-white px-4 py-2 rounded-md mt-2 transition-all duration-200 ease-in-out cursor-pointer`}>
+                    <div className={`${loading ? 'bg-gray-400' : 'bg-green-400 hover:bg-green-500'} shadow-md hover:shadow-lg font-Saira text-lg sm:text-xl text-white px-4 py-2 rounded-md mt-2 transition-all duration-200 ease-in-out cursor-pointer`}>
                       {loading ? 'Creating Account...' : 'Sign Up'}
                     </div>
                   </button>
@@ -307,7 +307,7 @@ function Signup() {
           <div className="mt-6 text-center text-sm sm:text-lg">
             Already have an account?{" "}
             <Link to="/login">
-              <span className="text-orange-400 hover:text-orange-500 cursor-pointer">
+              <span className="text-green-400 hover:text-green-500 cursor-pointer">
                 Log In
               </span>
             </Link>

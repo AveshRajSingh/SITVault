@@ -175,7 +175,7 @@ function UserProfile() {
 
   if (authLoading || loading) {
     return (
-      <div className="pt-20 min-h-screen bg-orange-50 flex items-center justify-center">
+      <div className="pt-20 min-h-screen bg-green-50 flex items-center justify-center">
         <div className="text-lg text-gray-600">Loading...</div>
       </div>
     );
@@ -183,7 +183,7 @@ function UserProfile() {
 
   if (error) {
     return (
-      <div className="pt-20 min-h-screen bg-orange-50 flex items-center justify-center">
+      <div className="pt-20 min-h-screen bg-green-50 flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-2">User Not Found</h2>
           <p className="text-gray-600">The user you're looking for doesn't exist.</p>
@@ -194,7 +194,7 @@ function UserProfile() {
 
   if (!profileUser) {
     return (
-      <div className="pt-20 bg-orange-50 min-h-screen flex justify-center items-center">
+      <div className="pt-20 bg-green-50 min-h-screen flex justify-center items-center">
         <div className="text-xl text-gray-600">
           Please log in to view profiles
         </div>
@@ -204,7 +204,7 @@ function UserProfile() {
 
   return (
     <>
-      <div className="pt-4 min-h-screen bg-orange-50">
+      <div className="pt-4 min-h-screen bg-green-50">
         <div className="pt-16 pb-8">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -219,7 +219,7 @@ function UserProfile() {
                       showDialog={showDialog}
                     />
                   ) : (
-                    <div className="relative h-32 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600">
+                    <div className="relative h-32 bg-gradient-to-br from-green-400 via-green-500 to-green-600">
                       <div className="absolute inset-0 bg-black/10"></div>
                       <div className="absolute top-4 right-4">
                         <ShareButton 
@@ -274,7 +274,7 @@ function UserProfile() {
                   <button 
                     onClick={() => setActiveTab('posts')}
                     className={`flex-1 py-3 text-center font-medium transition-colors ${
-                      activeTab === 'posts' ? 'text-orange-600 border-b-2 border-orange-600' : 'text-gray-600 hover:text-orange-500'
+                      activeTab === 'posts' ? 'text-green-600 border-b-2 border-green-600' : 'text-gray-600 hover:text-green-500'
                     }`}
                   >
                     Posts
@@ -282,7 +282,7 @@ function UserProfile() {
                   <button 
                     onClick={() => setActiveTab('resources')}
                     className={`flex-1 py-3 text-center font-medium transition-colors ${
-                      activeTab === 'resources' ? 'text-orange-600 border-b-2 border-orange-600' : 'text-gray-600 hover:text-orange-500'
+                      activeTab === 'resources' ? 'text-green-600 border-b-2 border-green-600' : 'text-gray-600 hover:text-green-500'
                     }`}
                   >
                     Resources

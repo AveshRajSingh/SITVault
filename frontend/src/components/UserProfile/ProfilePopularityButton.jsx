@@ -74,8 +74,8 @@ const ProfilePopularityButton = ({
         flex items-center ${currentSize.gap} ${currentSize.button}
         rounded-xl transition-all duration-200
         ${isLiked 
-          ? 'bg-orange-50 text-orange-600 hover:bg-orange-100' 
-          : 'bg-gray-50 text-gray-600 hover:bg-gray-100 hover:text-orange-500'
+          ? 'bg-green-50 text-green-600 hover:bg-green-100' 
+          : 'bg-gray-50 text-gray-600 hover:bg-gray-100 hover:text-green-500'
         }
         disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer}
         ${className}
@@ -83,7 +83,7 @@ const ProfilePopularityButton = ({
       title={isAuthenticated ? (isAdminVerified ? (isLiked ? 'Remove Reputation' : 'Add Reputation'): "you are not verified yet" ) : 'Login to add popularity'}
     >
       {isLiked ? (
-        <FaStar className={`${currentSize.icon} text-orange-500`} />
+        <FaStar className={`${currentSize.icon} text-green-500`} />
       ) : (
         <FaRegStar className={currentSize.icon} />
       )}

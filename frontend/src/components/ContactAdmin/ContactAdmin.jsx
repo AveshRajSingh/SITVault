@@ -71,7 +71,7 @@ function ContactAdmin() {
 
   if (!isAuthenticated) {
     return (
-      <div className='pt-20 h-screen bg-orange-50'>
+      <div className='pt-20 h-screen bg-green-50'>
         <div className='md:max-w-[90%] h-full lg:max-w-[80%] mx-auto'>
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mt-4 text-4xl font-bold text-gray-900 sm:text-5xl">
@@ -83,7 +83,7 @@ function ContactAdmin() {
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/login"
-                className="inline-flex items-center gap-2 rounded-lg bg-orange-600 px-4 py-2.5 text-white shadow hover:bg-orange-700 active:scale-[0.99]"
+                className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2.5 text-white shadow hover:bg-green-700 active:scale-[0.99]"
               >
                 Login <FiArrowRight />
               </Link>
@@ -95,7 +95,7 @@ function ContactAdmin() {
   }
 
   return (
-    <div className='pt-16 min-h-screen bg-orange-50 pb-4 md:pb-8'>
+    <div className='pt-16 min-h-screen bg-green-50 pb-4 md:pb-8'>
       <div className='md:max-w-[90%] lg:max-w-[80%] mx-auto px-2 md:px-4'>
         <div className="mx-auto max-w-2xl">
           <div className="text-center my-4 md:my-8">
@@ -121,7 +121,7 @@ function ContactAdmin() {
               {/* User Info Display */}
               <div className="bg-gray-50 p-4 rounded-lg">
                 <div className="flex items-center gap-3 mb-3">
-                  <FiUser className="text-orange-600 text-xl" />
+                  <FiUser className="text-green-600 text-xl" />
                   <span className="font-medium text-gray-700">From:</span>
                 </div>
                 <div className="ml-8">
@@ -133,7 +133,7 @@ function ContactAdmin() {
               {/* Admin Selection */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  <FiMail className="inline mr-2 text-orange-600" />
+                  <FiMail className="inline mr-2 text-green-600" />
                   Select Administrator
                 </label>
                 
@@ -151,7 +151,7 @@ function ContactAdmin() {
                     {/* Current Selection Display */}
                     {selectedAdmin && (
                       <div className="mb-3">
-                        <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-3">
                           <div className="flex items-center justify-between">
                             <div className="flex items-center">
                               <div className="flex-shrink-0 mr-3">
@@ -162,13 +162,13 @@ function ContactAdmin() {
                                       <img
                                         src={admin.user.profilePicture.url}
                                         alt={admin.user.fullName}
-                                        className="w-10 h-10 rounded-full object-cover border-2 border-orange-200"
+                                        className="w-10 h-10 rounded-full object-cover border-2 border-green-200"
                                       />
                                     );
                                   } else {
                                     return (
-                                      <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center border-2 border-orange-200">
-                                        <span className="text-orange-600 font-semibold text-base">
+                                      <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center border-2 border-green-200">
+                                        <span className="text-green-600 font-semibold text-base">
                                           {admin?.user.fullName?.charAt(0)?.toUpperCase() || 'A'}
                                         </span>
                                       </div>
@@ -178,7 +178,7 @@ function ContactAdmin() {
                               </div>
                               <div>
                                 <p className="text-sm font-medium text-gray-900">
-                                  <span className="text-orange-700">✓ Selected:</span> {admins.find(a => a._id === selectedAdmin)?.user.fullName}
+                                  <span className="text-green-700">✓ Selected:</span> {admins.find(a => a._id === selectedAdmin)?.user.fullName}
                                 </p>
                                 <p className="text-xs text-gray-600">
                                   @{admins.find(a => a._id === selectedAdmin)?.user.username} • {admins.find(a => a._id === selectedAdmin)?.role}
@@ -188,7 +188,7 @@ function ContactAdmin() {
                             <button
                               type="button"
                               onClick={() => setIsAdminSelectionOpen(!isAdminSelectionOpen)}
-                              className="text-orange-600 hover:text-orange-700 text-sm font-medium hover:bg-orange-100 px-2 py-1 rounded transition-colors"
+                              className="text-green-600 hover:text-green-700 text-sm font-medium hover:bg-green-100 px-2 py-1 rounded transition-colors"
                             >
                               Change
                             </button>
@@ -217,7 +217,7 @@ function ContactAdmin() {
                             key={admin._id}
                             className={`relative flex items-center p-3 border rounded-lg cursor-pointer transition-all ${
                               selectedAdmin === admin._id
-                                ? 'border-orange-500 bg-white shadow-sm'
+                                ? 'border-green-500 bg-white shadow-sm'
                                 : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
                             }`}
                             onClick={() => {
@@ -247,8 +247,8 @@ function ContactAdmin() {
                                   className="w-12 h-12 rounded-full object-cover border-2 border-gray-200"
                                 />
                               ) : (
-                                <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center border-2 border-gray-200">
-                                  <span className="text-orange-600 font-semibold text-lg">
+                                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center border-2 border-gray-200">
+                                  <span className="text-green-600 font-semibold text-lg">
                                     {admin.user.fullName?.charAt(0)?.toUpperCase() || 'A'}
                                   </span>
                                 </div>
@@ -279,7 +279,7 @@ function ContactAdmin() {
                             {/* Selection Indicator */}
                             <div className={`flex-shrink-0 ml-3 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
                               selectedAdmin === admin._id
-                                ? 'border-orange-500 bg-orange-500'
+                                ? 'border-green-500 bg-green-500'
                                 : 'border-gray-300'
                             }`}>
                               {selectedAdmin === admin._id && (
@@ -297,7 +297,7 @@ function ContactAdmin() {
               {/* Message Input */}
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  <FiMessageSquare className="inline mr-2 text-orange-600" />
+                  <FiMessageSquare className="inline mr-2 text-green-600" />
                   Your Message
                 </label>
                 <textarea
@@ -305,7 +305,7 @@ function ContactAdmin() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={6}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 resize-none"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 resize-none"
                   placeholder="Type your message here..."
                   required
                 />
@@ -316,7 +316,7 @@ function ContactAdmin() {
                 <button
                   type="submit"
                   disabled={loading || adminsLoading || admins.length === 0}
-                  className="inline-flex items-center gap-2 rounded-lg bg-orange-600 px-6 py-3 text-white font-medium shadow hover:bg-orange-700 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 text-white font-medium shadow hover:bg-green-700 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? (
                     <>

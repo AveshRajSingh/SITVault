@@ -133,7 +133,7 @@ const ResourceCard = ({ resource, onEdit, onDelete, onShare }) => {
                 </Link>
                 <div className="flex flex-col">
                   <Link to={`/profile/${resource.author.username}`}>
-                  <span className={`hover:underline ${resource.createdByAdmin && "text-orange-500 font-semibold"}`}>
+                  <span className={`hover:underline ${resource.createdByAdmin && "text-green-500 font-semibold"}`}>
                   {resource.author.fullName || resource.author.username}
                   </span>
                   </Link>
@@ -151,7 +151,7 @@ const ResourceCard = ({ resource, onEdit, onDelete, onShare }) => {
                 className={`flex items-center gap-1 px-3 py-1.5 rounded-lg transition-colors
                   ${
                     isUpvoted
-                      ? "bg-orange-500 text-white"
+                      ? "bg-green-500 text-white"
                       : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                   }`}
               >

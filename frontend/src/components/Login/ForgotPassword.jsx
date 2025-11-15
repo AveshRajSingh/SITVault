@@ -150,7 +150,7 @@ function ForgotPassword() {
   const renderStep1 = () => (
     <form onSubmit={handleSendOtp} className="space-y-4">
       <div className="text-center mb-6">
-        <FaLock className="mx-auto text-orange-500 mb-2" size={32} />
+        <FaLock className="mx-auto text-green-500 mb-2" size={32} />
         <h2 className="text-2xl font-bold text-gray-800">Forgot Password</h2>
         <p className="text-gray-600 text-sm mt-1">
           Enter your email address and we'll send you an OTP to reset your password
@@ -162,7 +162,7 @@ function ForgotPassword() {
           Email Address:
         </label>
         <input
-          className="bg-gray-50 caret-orange-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-orange-400 focus:shadow-lg shadow-orange-400/10"
+          className="bg-gray-50 caret-green-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-green-400 focus:shadow-lg shadow-green-400/10"
           id="email"
           name="email"
           value={formData.email}
@@ -189,14 +189,14 @@ function ForgotPassword() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
         {loading && <FaSpinner className="animate-spin" />}
         {loading ? "Sending OTP..." : "Send OTP"}
       </button>
 
       <div className="text-center">
-        <Link to="/login" className="text-orange-500 hover:text-orange-600 text-sm">
+        <Link to="/login" className="text-green-500 hover:text-green-600 text-sm">
           Back to Login
         </Link>
       </div>
@@ -206,7 +206,7 @@ function ForgotPassword() {
   const renderStep2 = () => (
     <form onSubmit={handleVerifyOtp} className="space-y-4">
       <div className="text-center mb-6">
-        <FaLock className="mx-auto text-orange-500 mb-2" size={32} />
+        <FaLock className="mx-auto text-green-500 mb-2" size={32} />
         <h2 className="text-2xl font-bold text-gray-800">Verify OTP</h2>
         <p className="text-gray-600 text-sm mt-1">
           Enter the 6-digit OTP sent to {formData.email}
@@ -218,7 +218,7 @@ function ForgotPassword() {
           OTP Code:
         </label>
         <input
-          className="bg-gray-50 caret-orange-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-orange-400 focus:shadow-lg shadow-orange-400/10 text-center text-lg tracking-wider"
+          className="bg-gray-50 caret-green-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-green-400 focus:shadow-lg shadow-green-400/10 text-center text-lg tracking-wider"
           id="otp"
           name="otp"
           value={formData.otp}
@@ -246,7 +246,7 @@ function ForgotPassword() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
         {loading && <FaSpinner className="animate-spin" />}
         {loading ? "Verifying..." : "Verify OTP"}
@@ -256,7 +256,7 @@ function ForgotPassword() {
         <button
           type="button"
           onClick={() => setStep(1)}
-          className="text-orange-500 hover:text-orange-600 text-sm"
+          className="text-green-500 hover:text-green-600 text-sm"
         >
           Back to Email
         </button>
@@ -267,7 +267,7 @@ function ForgotPassword() {
   const renderStep3 = () => (
     <form onSubmit={handleResetPassword} className="space-y-4">
       <div className="text-center mb-6">
-        <FaLock className="mx-auto text-orange-500 mb-2" size={32} />
+        <FaLock className="mx-auto text-green-500 mb-2" size={32} />
         <h2 className="text-2xl font-bold text-gray-800">Reset Password</h2>
         <p className="text-gray-600 text-sm mt-1">
           Enter your new password
@@ -280,7 +280,7 @@ function ForgotPassword() {
         </label>
         <div className="relative">
           <input
-            className="w-full bg-gray-50 caret-orange-400 px-4 py-2 pr-10 rounded-md outline-none border border-gray-300 focus:border-orange-400 focus:shadow-lg shadow-orange-400/10"
+            className="w-full bg-gray-50 caret-green-400 px-4 py-2 pr-10 rounded-md outline-none border border-gray-300 focus:border-green-400 focus:shadow-lg shadow-green-400/10"
             id="newPassword"
             name="newPassword"
             value={formData.newPassword}
@@ -306,7 +306,7 @@ function ForgotPassword() {
         </label>
         <div className="relative">
           <input
-            className="w-full bg-gray-50 caret-orange-400 px-4 py-2 pr-10 rounded-md outline-none border border-gray-300 focus:border-orange-400 focus:shadow-lg shadow-orange-400/10"
+            className="w-full bg-gray-50 caret-green-400 px-4 py-2 pr-10 rounded-md outline-none border border-gray-300 focus:border-green-400 focus:shadow-lg shadow-green-400/10"
             id="confirmPassword"
             name="confirmPassword"
             value={formData.confirmPassword}
@@ -341,7 +341,7 @@ function ForgotPassword() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
       >
         {loading && <FaSpinner className="animate-spin" />}
         {loading ? "Resetting Password..." : "Reset Password"}
@@ -350,9 +350,9 @@ function ForgotPassword() {
   );
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 to-white py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full">
-        <div className="bg-white rounded-lg shadow-md border border-orange-100 p-8">
+        <div className="bg-white rounded-lg shadow-md border border-green-100 p-8">
           {step === 1 && renderStep1()}
           {step === 2 && renderStep2()}
           {step === 3 && renderStep3()}

@@ -148,9 +148,9 @@ const SinglePostView = () => {
 
   if (authLoading || loading) {
     return (
-      <div className="pt-20 min-h-screen bg-orange-50 flex items-center justify-center">
+      <div className="pt-20 min-h-screen bg-green-50 flex items-center justify-center">
         <div className="flex flex-col items-center">
-          <FaSpinner className="animate-spin text-orange-500" size={32} />
+          <FaSpinner className="animate-spin text-green-500" size={32} />
           <span className="mt-4 text-gray-600">Loading post...</span>
         </div>
       </div>
@@ -159,14 +159,14 @@ const SinglePostView = () => {
 
   if (!post) {
     return (
-      <div className="pt-20 min-h-screen bg-orange-50 flex items-center justify-center">
+      <div className="pt-20 min-h-screen bg-green-50 flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">
             Post not found
           </h2>
           <Link
             to="/home"
-            className="text-orange-600 hover:text-orange-700 font-medium"
+            className="text-green-600 hover:text-green-700 font-medium"
           >
             Go back to home
           </Link>
@@ -176,10 +176,10 @@ const SinglePostView = () => {
   }
 
   const content = (
-    <div className="post-container pt-20 min-h-screen bg-orange-50">
+    <div className="post-container pt-20 min-h-screen bg-green-50">
       <div className="max-w-4xl mx-auto md:pb-4">
         {/* Post Card */}
-        <div className="post-card bg-white md:rounded-xl shadow-md border border-orange-100">
+        <div className="post-card bg-white md:rounded-xl shadow-md border border-green-100">
           <div className="overflow-visible rounded-t-xl">
           {/* Post Header */}
           <div className="p-3 px-2 md:p-6 border-b border-gray-100">
@@ -201,7 +201,7 @@ const SinglePostView = () => {
                         decoding="async"
                       />
                     ) : (
-                      <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold">
+                      <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
                         {post.author?.fullName?.charAt(0) || <FaUser />}
                       </div>
                     )}
@@ -209,14 +209,14 @@ const SinglePostView = () => {
                   <div className="flex flex-col">
                     <Link
                       to={`/profile/${post.author?.username}`}
-                      className="font-semibold text-gray-800 hover:!text-orange-600 transition-colors"
+                      className="font-semibold text-gray-800 hover:!text-green-600 transition-colors"
                     >
                       {post.author?.fullName || "Unknown User"}
                     </Link>
                     <p className="text-sm text-gray-500">
                       {formatDate(post.createdAt)}
                       {post.beenEdited && (
-                        <span className="ml-2 text-orange-500">(edited)</span>
+                        <span className="ml-2 text-green-500">(edited)</span>
                       )}
                     </p>
                   </div>

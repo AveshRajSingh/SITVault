@@ -88,7 +88,7 @@ function VerifyOTP() {
   // Show loading while checking auth status
   if (authLoading) {
     return (
-      <div className="font-Jost flex h-screen justify-center items-center text-gray-600 bg-orange-100/30">
+      <div className="font-Jost flex h-screen justify-center items-center text-gray-600 bg-green-100/30">
         <div className="text-lg">Loading...</div>
       </div>
     );
@@ -102,13 +102,13 @@ function VerifyOTP() {
   };
 
   return (
-    <div className="font-Jost flex h-screen justify-center items-center text-gray-600 bg-orange-100/30">
-      <div className="bg-white p-6 px-8 rounded-lg border min-w-[90%] sm:min-w-[70%] md:min-w-[50%] lg:min-w-[35%] border-orange-400 shadow-lg">
-        <div className="font-Saira text-3xl text-orange-400 text-center font-medium">
+    <div className="font-Jost flex h-screen justify-center items-center text-gray-600 bg-green-100/30">
+      <div className="bg-white p-6 px-8 rounded-lg border min-w-[90%] sm:min-w-[70%] md:min-w-[50%] lg:min-w-[35%] border-green-400 shadow-lg">
+        <div className="font-Saira text-3xl text-green-400 text-center font-medium">
           <span className="text-3xl md:text-4xl text-gray-600 font-Saira font-bold">
             SIT
           </span>
-          <span className="text-3xl md:text-4xl text-orange-400 font-Saira font-bold">
+          <span className="text-3xl md:text-4xl text-green-400 font-Saira font-bold">
             Vault
           </span>
         </div>
@@ -141,7 +141,7 @@ function VerifyOTP() {
                 id="otp"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
-                className="bg-gray-50 caret-orange-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-orange-400 focus:shadow-lg shadow-orange-400/10 text-center text-2xl tracking-widest"
+                className="bg-gray-50 caret-green-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-green-400 focus:shadow-lg shadow-green-400/10 text-center text-2xl tracking-widest"
                 type="text"
                 placeholder="000000"
                 maxLength="6"
@@ -151,7 +151,7 @@ function VerifyOTP() {
             </div>
             
             <button type="submit" disabled={loading}>
-              <div className={`${loading ? 'bg-gray-400' : 'bg-orange-400 hover:bg-orange-500'} shadow-md hover:shadow-lg font-Saira text-lg sm:text-xl text-white px-4 py-2 rounded-md mt-2 transition-all duration-200 ease-in-out cursor-pointer`}>
+              <div className={`${loading ? 'bg-gray-400' : 'bg-green-400 hover:bg-green-500'} shadow-md hover:shadow-lg font-Saira text-lg sm:text-xl text-white px-4 py-2 rounded-md mt-2 transition-all duration-200 ease-in-out cursor-pointer`}>
                 {loading ? 'Verifying...' : 'Verify OTP'}
               </div>
             </button>
@@ -163,7 +163,7 @@ function VerifyOTP() {
               <button
                 onClick={handleResendOTP}
                 disabled={resending || cooldown > 0}
-                className="text-orange-400 hover:text-orange-500 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+                className="text-green-400 hover:text-green-500 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {resending
                   ? 'Resending...'
@@ -176,7 +176,7 @@ function VerifyOTP() {
 
           <div className="mt-6 text-center text-sm sm:text-lg">
             <Link to="/login">
-              <span className="text-orange-400 hover:text-orange-500 cursor-pointer">
+              <span className="text-green-400 hover:text-green-500 cursor-pointer">
                 Back to Login
               </span>
             </Link>

@@ -113,11 +113,11 @@ const ProfileHeader = ({ showDialog, profileUser }) => {
   };
 
   return (
-    <div className="relative h-32 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 overflow-hidden">
+    <div className="relative h-32 bg-gradient-to-br from-green-400 via-green-500 to-green-600 overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 bg-black/10"></div>
       <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-white/10"></div>
-      <div className="absolute -bottom-4 -left-4 w-24 h-24 rounded-full bg-orange-300/30"></div>
+      <div className="absolute -bottom-4 -left-4 w-24 h-24 rounded-full bg-green-300/30"></div>
       
       {!isEditing ? (
         // View Mode
@@ -161,7 +161,7 @@ const ProfileHeader = ({ showDialog, profileUser }) => {
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all duration-200"
                   placeholder="Enter your full name"
                   disabled={loading}
                 />
@@ -178,7 +178,7 @@ const ProfileHeader = ({ showDialog, profileUser }) => {
                   name="username"
                   value={formData.username.replace(/\s/g, "")}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all duration-200"
                   placeholder="Enter your username"
                   disabled={loading}
                 />
@@ -200,7 +200,7 @@ const ProfileHeader = ({ showDialog, profileUser }) => {
               <button
                 onClick={handleSave}
                 disabled={loading}
-                className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors disabled:opacity-50 flex items-center gap-2 min-w-[80px] justify-center"
+                className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors disabled:opacity-50 flex items-center gap-2 min-w-[80px] justify-center"
               >
                 {loading ? (
                   <>

@@ -226,9 +226,9 @@ function AdminDashboard() {
   // Show loading while auth is being checked
   if (authLoading || loading) {
     return (
-      <div className="pt-20 min-h-screen bg-gradient-to-br from-orange-50 to-orange-100 flex justify-center items-center px-4">
+      <div className="pt-20 min-h-screen bg-gradient-to-br from-green-50 to-green-100 flex justify-center items-center px-4">
         <div className="text-center">
-          <FaSpinner className="animate-spin text-orange-500 mx-auto mb-4" size={32} />
+          <FaSpinner className="animate-spin text-green-500 mx-auto mb-4" size={32} />
           <div className="text-lg md:text-xl text-gray-600">Loading Admin Dashboard...</div>
         </div>
       </div>
@@ -238,21 +238,21 @@ function AdminDashboard() {
   const activeTabClasses = (tabName) => 
     `flex items-center gap-2 px-4 py-3 text-lg font-medium transition-colors ${
       activeTab === tabName
-        ? 'text-orange-600 bg-orange-100 border-b-2 border-orange-500'
-        : 'text-gray-600 hover:text-orange-500 hover:bg-gray-50'
+        ? 'text-green-600 bg-green-100 border-b-2 border-green-500'
+        : 'text-gray-600 hover:text-green-500 hover:bg-gray-50'
     }`;
 
 
   return (
     <>
-      <div className="pt-20 min-h-screen bg-gradient-to-br from-orange-50 to-orange-100">
+      <div className="pt-20 min-h-screen bg-gradient-to-br from-green-50 to-green-100">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 md:py-8">
           
           {/* Header Section */}
           <div className="mb-6 md:mb-8">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div className="flex items-center space-x-3 md:space-x-4">
-                <div className="bg-gradient-to-r from-orange-500 to-orange-600 p-2 md:p-3 rounded-full flex-shrink-0">
+                <div className="bg-gradient-to-r from-green-500 to-green-600 p-2 md:p-3 rounded-full flex-shrink-0">
                   <MdAdminPanelSettings className="text-white" size={24} />
                 </div>
                 <div className="min-w-0">
@@ -268,7 +268,7 @@ function AdminDashboard() {
           </div>
 
           {/* Admin Profile Section */}
-          <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 lg:p-8 mb-6 md:mb-8 border border-orange-100">
+          <div className="bg-white rounded-xl shadow-lg p-4 md:p-6 lg:p-8 mb-6 md:mb-8 border border-green-100">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div className="flex items-center space-x-4 md:space-x-6 min-w-0 flex-1">
                 <div className="relative flex-shrink-0">
@@ -278,9 +278,9 @@ function AdminDashboard() {
                       "https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
                     }
                     alt="Admin Profile"
-                    className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-4 border-orange-200"
+                    className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-4 border-green-200"
                   />
-                  <div className="absolute -bottom-2 -right-2 bg-orange-500 rounded-full p-1">
+                  <div className="absolute -bottom-2 -right-2 bg-green-500 rounded-full p-1">
                     <FaCrown className="text-white" size={12} />
                   </div>
                 </div>
@@ -290,7 +290,7 @@ function AdminDashboard() {
                     <FaCrown
                       className={`${
                         adminStatus.role === "superadmin"
-                          ? "text-orange-400"
+                          ? "text-green-400"
                           : "text-blue-500"
                       } flex-shrink-0`}
                       size={16}
@@ -333,11 +333,11 @@ function AdminDashboard() {
                 <div 
                   onClick={() => handleShowUsers("unverified")}
                   className={`bg-white rounded-lg shadow-md p-4 md:p-6 border-l-4 ${
-                    showUsers === "unverified" ? "border-orange-500" : "border-white"
-                  } cursor-pointer hover:border-orange-500 transition-colors duration-200`}
+                    showUsers === "unverified" ? "border-green-500" : "border-white"
+                  } cursor-pointer hover:border-green-500 transition-colors duration-200`}
                 >
                   <div className="flex items-center space-x-2 md:space-x-3">
-                    <FaUsers className="text-orange-500 flex-shrink-0" size={18} />
+                    <FaUsers className="text-green-500 flex-shrink-0" size={18} />
                     <span className="text-sm md:text-base font-medium text-gray-600">
                       Pending Users
                     </span>

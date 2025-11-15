@@ -24,7 +24,7 @@ function UpcomingUpdates() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Background decorative elements */}
         <div
-          className="absolute top-[15%] right-[20%] w-64 h-64 bg-orange-500/10 rounded-full animate-pulse blur-xl"
+          className="absolute top-[15%] right-[20%] w-64 h-64 bg-green-500/10 rounded-full animate-pulse blur-xl"
           style={{ animationDuration: "8s" }}
         ></div>
 

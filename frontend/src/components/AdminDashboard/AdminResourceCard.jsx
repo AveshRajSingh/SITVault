@@ -143,7 +143,7 @@ const AdminResourceCard = ({
                     <span
                       className={`hover:underline ${
                         resource.createdByAdmin &&
-                        "text-orange-500 font-semibold"
+                        "text-green-500 font-semibold"
                       }`}
                     >
                       {resource.author.fullName || resource.author.username}

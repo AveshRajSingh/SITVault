@@ -41,7 +41,7 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
       <div className="md:hidden">
         <button
           onClick={toggleMenu}
-          className="text-gray-600 hover:text-orange-400 transition-colors duration-300 p-2"
+          className="text-gray-600 hover:text-green-400 transition-colors duration-300 p-2"
         >
           {user.profilePicture.url ? (
             <img
@@ -76,7 +76,7 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
                 <span className="text-xl text-gray-600 font-Saira font-bold">
                   SIT
                 </span>
-                <span className="text-xl text-orange-400 font-Saira font-bold">
+                <span className="text-xl text-green-400 font-Saira font-bold">
                   Vault
                 </span>
               </div>
@@ -98,8 +98,8 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
                       className={({ isActive }) =>
                         `${
                           isActive
-                            ? "text-orange-400 bg-orange-50 border-r-2 border-orange-400"
-                            : "text-gray-700 hover:text-orange-400 hover:bg-gray-50"
+                            ? "text-green-400 bg-green-50 border-r-2 border-green-400"
+                            : "text-gray-700 hover:text-green-400 hover:bg-gray-50"
                         } transition-all duration-200`
                       }
                       onClick={closeMenu}
@@ -133,8 +133,8 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
                       className={({ isActive }) =>
                         `flex items-center px-4 py-3 text-lg ${
                           isActive
-                            ? "text-orange-400 bg-orange-50 border-r-2 border-orange-400"
-                            : "text-gray-700 hover:text-orange-400 hover:bg-gray-50"
+                            ? "text-green-400 bg-green-50 border-r-2 border-green-400"
+                            : "text-gray-700 hover:text-green-400 hover:bg-gray-50"
                         } transition-all duration-200`
                       }
                       onClick={closeMenu}
@@ -147,8 +147,8 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
                       className={({ isActive }) =>
                         `flex items-center px-4 py-3 text-lg ${
                           isActive
-                            ? "text-orange-400 bg-orange-50 border-r-2 border-orange-400"
-                            : "text-gray-700 hover:text-orange-400 hover:bg-gray-50"
+                            ? "text-green-400 bg-green-50 border-r-2 border-green-400"
+                            : "text-gray-700 hover:text-green-400 hover:bg-gray-50"
                         } transition-all duration-200`
                       }
                       onClick={closeMenu}
@@ -161,8 +161,8 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
                       className={({ isActive }) =>
                         `flex items-center px-4 py-3 text-lg ${
                           isActive
-                            ? "text-orange-400 bg-orange-50 border-r-2 border-orange-400"
-                            : "text-gray-700 hover:text-orange-400 hover:bg-gray-50"
+                            ? "text-green-400 bg-green-50 border-r-2 border-green-400"
+                            : "text-gray-700 hover:text-green-400 hover:bg-gray-50"
                         } transition-all duration-200`
                       }
                       onClick={closeMenu}
@@ -177,8 +177,8 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
                       className={({ isActive }) =>
                         `flex items-center px-4 py-3 text-lg ${
                           isActive
-                            ? "text-orange-400 bg-orange-50 border-r-2 border-orange-400"
-                            : "text-gray-700 hover:text-orange-400 hover:bg-gray-50"
+                            ? "text-green-400 bg-green-50 border-r-2 border-green-400"
+                            : "text-gray-700 hover:text-green-400 hover:bg-gray-50"
                         } transition-all duration-200`
                       }
                       onClick={closeMenu}
@@ -194,8 +194,8 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
                       className={({ isActive }) =>
                         `flex items-center gap-3 px-4 py-3 text-lg ${
                           isActive
-                            ? "text-orange-400 bg-orange-50 border-r-2 border-orange-400"
-                            : "text-gray-700 hover:text-orange-400 hover:bg-gray-50"
+                            ? "text-green-400 bg-green-50 border-r-2 border-green-400"
+                            : "text-gray-700 hover:text-green-400 hover:bg-gray-50"
                         } transition-all duration-200`
                       }
                       onClick={closeMenu}
@@ -209,8 +209,8 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
                       className={({ isActive }) =>
                         `flex items-center gap-3 px-4 py-3 text-lg ${
                           isActive
-                            ? "text-orange-400 bg-orange-50 border-r-2 border-orange-400"
-                            : "text-gray-700 hover:text-orange-400 hover:bg-gray-50"
+                            ? "text-green-400 bg-green-50 border-r-2 border-green-400"
+                            : "text-gray-700 hover:text-green-400 hover:bg-gray-50"
                         } transition-all duration-200`
                       }
                       onClick={closeMenu}
@@ -224,8 +224,8 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
                       className={({ isActive }) =>
                         `flex items-center gap-3 px-4 py-3 text-lg ${
                           isActive
-                            ? "text-orange-400 bg-orange-50 border-r-2 border-orange-400"
-                            : "text-gray-700 hover:text-orange-400 hover:bg-gray-50"
+                            ? "text-green-400 bg-green-50 border-r-2 border-green-400"
+                            : "text-gray-700 hover:text-green-400 hover:bg-gray-50"
                         } transition-all duration-200`
                       }
                       onClick={closeMenu}
@@ -246,14 +246,14 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
                 <div className="flex flex-col gap-4 p-4">
                   <Link
                     to="/login"
-                    className="text-center py-3 text-lg text-gray-600 hover:text-orange-400 transition-colors duration-300"
+                    className="text-center py-3 text-lg text-gray-600 hover:text-green-400 transition-colors duration-300"
                     onClick={closeMenu}
                   >
                     Login
                   </Link>
                   <Link
                     to="/signup"
-                    className="text-center bg-orange-400 hover:bg-orange-500 text-white px-4 py-3 rounded-lg transition-colors duration-300"
+                    className="text-center bg-green-400 hover:bg-green-500 text-white px-4 py-3 rounded-lg transition-colors duration-300"
                     onClick={closeMenu}
                   >
                     Sign Up

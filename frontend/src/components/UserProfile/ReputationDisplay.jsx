@@ -103,7 +103,7 @@ const ReputationDisplay = ({
           </div>
         )}
         <button 
-        className="font-semibold  text-gray-500 hover:text-orange-400 transition-all hover:underline cursor-pointer"
+        className="font-semibold  text-gray-500 hover:text-green-400 transition-all hover:underline cursor-pointer"
         onClick={() => setShowBreakdown(!showBreakdown)}
         title={showBreakdown ? "Hide Breakdown" : "Show Breakdown"}
         >

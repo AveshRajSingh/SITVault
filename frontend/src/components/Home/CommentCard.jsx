@@ -148,7 +148,7 @@ const CommentCard = ({
           <h5 className="font-medium text-gray-800">
             <Link 
               to={`/profile/${comment.user?.username}`}
-              className="hover:text-orange-600 transition-colors cursor-pointer"
+              className="hover:text-green-600 transition-colors cursor-pointer"
               onClick={onNavigate}
             >
               {comment.user?.fullName || comment.user?.username || "Unknown User"}
@@ -218,7 +218,7 @@ const CommentCard = ({
                 comment.user?.fullName || comment.user?.username || "Unknown User"
               )
             }
-            className="text-gray-500 text-sm hover:!text-orange-500 transition-colors flex items-center gap-1 cursor-pointer"
+            className="text-gray-500 text-sm hover:!text-green-500 transition-colors flex items-center gap-1 cursor-pointer"
           >
             <FaReply size={12} />
             <span>Reply</span>
@@ -230,7 +230,7 @@ const CommentCard = ({
         <div className="mt-1">
           <button
             onClick={() => setShowReplies((v) => !v)}
-            className="text-gray-500 text-sm hover:!text-orange-500 transition-colors cursor-pointer"
+            className="text-gray-500 text-sm hover:!text-green-500 transition-colors cursor-pointer"
           >
             {showReplies ? "Hide" : "Show"} {comment.replies.length}{" "}
             {comment.replies.length === 1 ? "reply" : "replies"}
@@ -260,7 +260,7 @@ const CommentCard = ({
                       <h6 className="font-medium text-gray-800 text-sm">
                         <Link 
                           to={`/profile/${reply.user?.username}`}
-                          className="hover:text-orange-600 transition-colors cursor-pointer"
+                          className="hover:text-green-600 transition-colors cursor-pointer"
                           onClick={onNavigate}
                         >
                           {reply.user?.fullName ||
@@ -343,7 +343,7 @@ const CommentCard = ({
                               "Unknown User"
                           )
                         }
-                        className="text-gray-500 text-xs hover:!text-orange-500 transition-colors flex items-center gap-1 cursor-pointer"
+                        className="text-gray-500 text-xs hover:!text-green-500 transition-colors flex items-center gap-1 cursor-pointer"
                       >
                         <FaReply size={10} />
                         <span>Reply</span>

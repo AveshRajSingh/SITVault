@@ -6,7 +6,7 @@ const Logo = () => {
       <span className="text-2xl md:text-3xl text-gray-600 font-Saira font-bold">
         SIT
       </span>
-      <span className="text-2xl md:text-3xl text-orange-400 font-Saira font-bold">
+      <span className="text-2xl md:text-3xl text-green-400 font-Saira font-bold">
         Vault
       </span>
     </Link>

@@ -129,8 +129,8 @@ const ShareProfileModal = ({ isOpen, onClose, user, isOwnProfile }) => {
         {/* Modal Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-100">
           <div className="flex items-center gap-3">
-            <div className="bg-orange-100 p-2 rounded-full">
-              <FaShare className="text-orange-600" size={20} />
+            <div className="bg-green-100 p-2 rounded-full">
+              <FaShare className="text-green-600" size={20} />
             </div>
             <div>
               <h3 className="text-lg font-semibold text-gray-800">
@@ -147,7 +147,7 @@ const ShareProfileModal = ({ isOpen, onClose, user, isOwnProfile }) => {
         </div>
 
         {/* Profile Preview */}
-        <div className="p-6 bg-gradient-to-r from-orange-50 to-amber-50">
+        <div className="p-6 bg-gradient-to-r from-green-50 to-amber-50">
           <div className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm">
             {user?.profilePicture?.url ? (
               <img
@@ -156,8 +156,8 @@ const ShareProfileModal = ({ isOpen, onClose, user, isOwnProfile }) => {
                 className="w-12 h-12 rounded-full object-cover"
               />
             ) : (
-              <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
-                <span className="text-orange-600 font-semibold text-lg">
+              <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                <span className="text-green-600 font-semibold text-lg">
                   {user?.fullName?.charAt(0)?.toUpperCase() || 'U'}
                 </span>
               </div>
@@ -166,7 +166,7 @@ const ShareProfileModal = ({ isOpen, onClose, user, isOwnProfile }) => {
               <h4 className="font-semibold text-gray-800 truncate">
                 {user?.fullName || 'Unknown User'}
               </h4>
-              <p className="text-sm text-orange-600 truncate">
+              <p className="text-sm text-green-600 truncate">
                 @{user?.username || 'username'}
               </p>
               {user?.bio && (
@@ -249,7 +249,7 @@ const ShareProfileModal = ({ isOpen, onClose, user, isOwnProfile }) => {
                   className={`px-4 py-3 cursor-pointer rounded-lg font-medium transition-all duration-200 flex items-center gap-2 min-w-[100px] justify-center ${
                     copyStatus === 'copied'
                       ? 'bg-green-500 text-white'
-                      : 'bg-orange-500 hover:bg-orange-600 text-white'
+                      : 'bg-green-500 hover:bg-green-600 text-white'
                   }`}
                 >
                   {copyStatus === 'copied' ? (

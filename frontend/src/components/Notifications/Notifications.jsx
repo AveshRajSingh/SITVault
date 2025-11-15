@@ -86,7 +86,7 @@ const Notifications = () => {
     } else if (message.includes('follow')) {
       return <FiUser className="text-green-500" size={20} />;
     } else {
-      return <FiBell className="text-orange-500" size={20} />;
+      return <FiBell className="text-green-500" size={20} />;
     }
   };
 
@@ -105,7 +105,7 @@ const Notifications = () => {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
               <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
-                <FiBell className="text-orange-500" size={32} />
+                <FiBell className="text-green-500" size={32} />
                 Notifications
               </h1>
               <p className="text-gray-600 mt-1">
@@ -119,7 +119,7 @@ const Notifications = () => {
             <button
               onClick={() => fetchNotifications(true)}
               disabled={refreshing}
-              className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors disabled:opacity-50"
+              className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors disabled:opacity-50"
             >
               <FiRefreshCw className={refreshing ? 'animate-spin' : ''} size={18} />
               Refresh
@@ -132,7 +132,7 @@ const Notifications = () => {
               onClick={() => setFilter('all')}
               className={`px-4 py-2 font-medium transition-colors border-b-2 ${
                 filter === 'all'
-                  ? 'border-orange-500 text-orange-500'
+                  ? 'border-green-500 text-green-500'
                   : 'border-transparent text-gray-600 hover:text-gray-900'
               }`}
             >
@@ -142,7 +142,7 @@ const Notifications = () => {
               onClick={() => setFilter('unread')}
               className={`px-4 py-2 font-medium transition-colors border-b-2 ${
                 filter === 'unread'
-                  ? 'border-orange-500 text-orange-500'
+                  ? 'border-green-500 text-green-500'
                   : 'border-transparent text-gray-600 hover:text-gray-900'
               }`}
             >
@@ -155,7 +155,7 @@ const Notifications = () => {
             <div className="mt-4">
               <button
                 onClick={handleMarkAllAsRead}
-                className="flex items-center gap-2 text-sm text-orange-500 hover:text-orange-600 font-medium"
+                className="flex items-center gap-2 text-sm text-green-500 hover:text-green-600 font-medium"
               >
                 <FiCheckCircle size={16} />
                 Mark all as read
@@ -168,7 +168,7 @@ const Notifications = () => {
         {loading ? (
           <div className="bg-white rounded-lg shadow-sm p-12">
             <div className="flex flex-col items-center justify-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500"></div>
               <p className="mt-4 text-gray-600">Loading notifications...</p>
             </div>
           </div>
@@ -196,7 +196,7 @@ const Notifications = () => {
                 className={`bg-white rounded-lg shadow-sm p-4 cursor-pointer transition-all hover:shadow-md border-l-4 ${
                   notification.isRead 
                     ? 'border-gray-200 opacity-75' 
-                    : 'border-orange-500'
+                    : 'border-green-500'
                 }`}
               >
                 <div className="flex items-start gap-4">
@@ -222,7 +222,7 @@ const Notifications = () => {
                   {/* Unread Indicator */}
                   {!notification.isRead && (
                     <div className="flex-shrink-0">
-                      <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     </div>
                   )}
                 </div>

@@ -17,15 +17,15 @@ function HeroText() {
           select-none text-center text-4xl sm:text-5xl md:text-6xl lg:text-8xl'
         >
           <span className='text-gray-600'>SIT</span>
-          <span className='text-orange-400'>Vault</span>
+          <span className='text-green-400'>Vault</span>
         </h1>
         <p 
           className='text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600'
         >
           Empowering
-          <span className='text-orange-400'> Innovation</span>,
-          <span className='text-orange-400'> Code </span>by 
-          <span className='text-orange-400'> Code</span>.
+          <span className='text-green-400'> Innovation</span>,
+          <span className='text-green-400'> Code </span>by 
+          <span className='text-green-400'> Code</span>.
         </p>
         
         <AnimatePresence>
@@ -41,8 +41,8 @@ function HeroText() {
                 Dear Students, <br /> 
                 With warm regards, we at SITVault are thrilled to welcome you to our community. <br />
                 Here, at SITVault we are determined to provide you with the best possible colalborative 
-                platform Where you can share your <span className='text-orange-400'>Queries</span>, <span className='text-orange-400'>Projects</span>, and 
-                <span className='text-orange-400'> Ideas</span> to other students and faculty members. <br />
+                platform Where you can share your <span className='text-green-400'>Queries</span>, <span className='text-green-400'>Projects</span>, and 
+                <span className='text-green-400'> Ideas</span> to other students and faculty members. <br />
                 We are committed to fostering a culture of innovation and collaboration, 
                 and we believe that SITVault will play a vital role in achieving this goal. <br />
                 We look forward to working with you and supporting you in your academic journey. <br />
@@ -63,7 +63,7 @@ function HeroText() {
               viewBox="0 0 24 24" 
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
-              className="text-orange-400 animate-bounce"
+              className="text-green-400 animate-bounce"
             >
               <path 
                 d="M7.41 8.59L12 13.17L16.59 8.59L18 10L12 16L6 10L7.41 8.59Z" 

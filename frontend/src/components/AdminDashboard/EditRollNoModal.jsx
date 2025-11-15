@@ -43,7 +43,7 @@ const EditRollNoModal = ({ isOpen, onClose, onSave, user }) => {
             </button>
             <button
               onClick={handleSave}
-              className="rounded-md border border-transparent bg-orange-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700"
+              className="rounded-md border border-transparent bg-green-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700"
             >
               Save Changes
             </button>

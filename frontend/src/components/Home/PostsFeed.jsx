@@ -14,7 +14,7 @@ const PostsFeed = ({
     <div className=" border-gray-400">
       {isSuspended ? (
                 <>
-                <div className="flex font-Saira flex-col items-center justify-center h-64 text-orange-700">
+                <div className="flex font-Saira flex-col items-center justify-center h-64 text-green-700">
                   <FaBan size={48} className="mb-4" />
                   <p className="text-lg font-bold text-center">This account is suspended <br />
                     {suspensionEnd && (
@@ -36,7 +36,7 @@ const PostsFeed = ({
                 </>
               ) : postsLoading ? (
         <div className="flex justify-center items-center py-6">
-          <FaSpinner className="animate-spin text-orange-500" size={24} />
+          <FaSpinner className="animate-spin text-green-500" size={24} />
           <span className="ml-2 text-gray-600">Loading posts...</span>
         </div>
       ) : posts.length === 0 ? (

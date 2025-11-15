@@ -66,7 +66,7 @@ const Settings = () => {
   };
 
   return (
-    <div className="min-h-screen bg-orange-50">
+    <div className="min-h-screen bg-green-50">
       <div className="pt-16 pb-8 my-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -82,7 +82,7 @@ const Settings = () => {
                       onClick={() => setActiveTab('account')}
                       className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-colors ${
                         activeTab === 'account'
-                          ? 'bg-orange-100 text-orange-700 border border-orange-200'
+                          ? 'bg-green-100 text-green-700 border border-green-200'
                           : 'text-gray-600 hover:bg-gray-100'
                       }`}
                     >
@@ -94,7 +94,7 @@ const Settings = () => {
                       onClick={() => setActiveTab('notifications')}
                       className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-colors ${
                         activeTab === 'notifications'
-                          ? 'bg-orange-100 text-orange-700 border border-orange-200'
+                          ? 'bg-green-100 text-green-700 border border-green-200'
                           : 'text-gray-600 hover:bg-gray-100'
                       }`}
                     >
@@ -168,7 +168,7 @@ const Settings = () => {
                         To edit your profile information, go to your{' '}
                         <button
                           onClick={() => navigate('/profile')}
-                          className="text-orange-600 hover:text-orange-700 font-medium"
+                          className="text-green-600 hover:text-green-700 font-medium"
                         >
                           Profile page
                         </button>

@@ -226,7 +226,7 @@ const ResourceFormModal = ({ isOpen, onClose, onResourceCreated, initialData }) 
                       href={initialData.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-orange-600 hover:text-orange-700 flex items-center gap-1"
+                      className="text-sm text-green-600 hover:text-green-700 flex items-center gap-1"
                     >
                       <FaFilePdf />
                       View PDF
@@ -247,7 +247,7 @@ const ResourceFormModal = ({ isOpen, onClose, onResourceCreated, initialData }) 
                   />
                   <label
                     htmlFor="pdf-upload"
-                    className="flex items-center justify-center gap-2 w-full p-4 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-orange-500 hover:bg-orange-50 transition-colors"
+                    className="flex items-center justify-center gap-2 w-full p-4 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-green-500 hover:bg-green-50 transition-colors"
                   >
                     {pdfFileName ? (
                       <>
@@ -312,7 +312,7 @@ const ResourceFormModal = ({ isOpen, onClose, onResourceCreated, initialData }) 
             <button
               type="submit"
               disabled={loading}
-              className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <>

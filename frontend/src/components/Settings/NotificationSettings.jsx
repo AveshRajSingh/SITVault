@@ -110,7 +110,7 @@ const NotificationSettings = () => {
     return (
       <div className="p-6">
         <div className="flex items-center justify-center py-8">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-600"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600"></div>
         </div>
       </div>
     );
@@ -223,7 +223,7 @@ const NotificationSettings = () => {
               <button
                 onClick={handleEnableNotifications}
                 disabled={isLoading || permission === 'denied'}
-                className="flex items-center gap-2 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                className="flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium"
               >
                 {isLoading ? (
                   <>

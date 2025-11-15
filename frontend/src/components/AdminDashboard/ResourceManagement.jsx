@@ -67,16 +67,16 @@ const ResourceManagement = () => {
   const filterButtonClasses = (filter) => 
     `flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
       activeFilter === filter
-        ? 'bg-orange-500 text-white'
+        ? 'bg-green-500 text-white'
         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
     }`;
 
   return (
-    <div className="bg-white rounded-xl shadow-lg border border-orange-100 p-2 md:p-6">
+    <div className="bg-white rounded-xl shadow-lg border border-green-100 p-2 md:p-6">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center p-2 space-x-3">
-          <div className="bg-orange-100 p-2 rounded-lg">
-            <FaBookOpen className="text-orange-600" size={20} />
+          <div className="bg-green-100 p-2 rounded-lg">
+            <FaBookOpen className="text-green-600" size={20} />
           </div>
           <h2 className="text-xl md:text-2xl font-bold text-gray-800">Resource Management</h2>
         </div>
@@ -89,7 +89,7 @@ const ResourceManagement = () => {
 
       {loading ? (
         <div className="text-center py-12" aria-busy="true">
-          <FaSpinner className="animate-spin text-orange-500 mx-auto mb-4" size={32} />
+          <FaSpinner className="animate-spin text-green-500 mx-auto mb-4" size={32} />
           <p className="text-gray-600">Loading resources...</p>
         </div>
       ) : resources.length === 0 ? (

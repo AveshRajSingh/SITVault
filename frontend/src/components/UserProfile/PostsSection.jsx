@@ -268,12 +268,12 @@ const PostsSection = ({ user, isOwnProfile = true }) => {
 
   if (loading) {
     return (
-      <div className="w-full bg-white rounded-lg border border-orange-100 p-4">
-        <h2 className="text-2xl font-bold text-orange-600 mb-4 border-b border-orange-200 pb-2">
+      <div className="w-full bg-white rounded-lg border border-green-100 p-4">
+        <h2 className="text-2xl font-bold text-green-600 mb-4 border-b border-green-200 pb-2">
           {isOwnProfile ? 'Your Posts' : `${user?.fullName}'s Posts`}
         </h2>
         <div className="flex items-center justify-center h-64">
-          <FaSpinner className="animate-spin text-orange-500 mr-2" size={24} />
+          <FaSpinner className="animate-spin text-green-500 mr-2" size={24} />
           <span className="text-gray-600">Loading posts...</span>
         </div>
       </div>
@@ -283,8 +283,8 @@ const PostsSection = ({ user, isOwnProfile = true }) => {
   return (
   <>
       <div className="w-full">
-        <div className="flex items-center justify-between mb-4 border-b border-orange-200 pb-2">
-          <h2 className="text-lg md:text-2xl font-bold text-orange-600 flex items-center gap-2">
+        <div className="flex items-center justify-between mb-4 border-b border-green-200 pb-2">
+          <h2 className="text-lg md:text-2xl font-bold text-green-600 flex items-center gap-2">
             <FaClipboard />
             {isOwnProfile ? 'Your Posts' : `${user?.fullName}'s Posts`}
           </h2>
@@ -295,7 +295,7 @@ const PostsSection = ({ user, isOwnProfile = true }) => {
             {totalPosts > 1 && (
               <button
                 onClick={handleShowAllPosts}
-                className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 text-sm md:text-md bg-orange-400 text-white rounded-lg hover:bg-orange-500 transition-colors cursor-pointer"
+                className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 text-sm md:text-md bg-green-400 text-white rounded-lg hover:bg-green-500 transition-colors cursor-pointer"
               >
                 <FaExpand size={12} />
                 <span>Show All</span>
@@ -306,7 +306,7 @@ const PostsSection = ({ user, isOwnProfile = true }) => {
 
         {isSuspended ? (
           <>
-          <div className="flex font-Saira flex-col items-center justify-center h-64 text-orange-700">
+          <div className="flex font-Saira flex-col items-center justify-center h-64 text-green-700">
             <FaBan size={48} className="mb-4" />
             <p className="text-lg font-bold text-center">This account is suspended <br />
               {suspensionEnd && (
@@ -368,7 +368,7 @@ const PostsSection = ({ user, isOwnProfile = true }) => {
             {/* Modal Header */}
             <div className="flex items-center justify-between p-4 md:p-6 border-b border-gray-200">
               <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-                <FaClipboard className="text-orange-500" />
+                <FaClipboard className="text-green-500" />
                 {isOwnProfile ? `All Your Posts (${totalPosts})` : `All ${user?.fullName}'s Posts (${totalPosts})`}
               </h3>
               <button
@@ -383,7 +383,7 @@ const PostsSection = ({ user, isOwnProfile = true }) => {
             <div className="flex-1 overflow-y-auto px-0 py-3 md:p-6">
               {allPostsLoading && allPosts.length === 0 ? (
                 <div className="flex items-center justify-center h-64">
-                  <FaSpinner className="animate-spin text-orange-500 mr-2" size={24} />
+                  <FaSpinner className="animate-spin text-green-500 mr-2" size={24} />
                   <span className="text-gray-600">Loading all posts...</span>
                 </div>
               ) : (
@@ -403,7 +403,7 @@ const PostsSection = ({ user, isOwnProfile = true }) => {
                       <button
                         onClick={handleLoadMorePosts}
                         disabled={allPostsLoading}
-                        className="flex items-center gap-2 px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="flex items-center gap-2 px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {allPostsLoading ? (
                           <>

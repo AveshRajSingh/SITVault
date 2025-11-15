@@ -227,15 +227,15 @@ const ProfilePicture = ({ user: profileUser, updateUser, showDialog, isOwnProfil
             />
           ) : (
             <div 
-              className="w-full h-full rounded-full bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center cursor-pointer hover:scale-105 transition-transform duration-300 shadow-lg ring-4 ring-white"
+              className="w-full h-full rounded-full bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center cursor-pointer hover:scale-105 transition-transform duration-300 shadow-lg ring-4 ring-white"
               onClick={viewProfilePicture}
             >
               {displayUser?.fullName ? (
-                <span className="text-3xl font-bold text-orange-600">
+                <span className="text-3xl font-bold text-green-600">
                   {displayUser.fullName.charAt(0).toUpperCase()}
                 </span>
               ) : (
-                <FaUser size={32} className="text-orange-600" />
+                <FaUser size={32} className="text-green-600" />
               )}
             </div>
           )}
@@ -244,7 +244,7 @@ const ProfilePicture = ({ user: profileUser, updateUser, showDialog, isOwnProfil
             <button
               onClick={triggerFileInput}
               disabled={uploading}
-              className="absolute bottom-0 right-0 w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white shadow-lg hover:bg-orange-600 transition-colors disabled:opacity-50"
+              className="absolute bottom-0 right-0 w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg hover:bg-green-600 transition-colors disabled:opacity-50"
               title="Change profile picture"
             >
               {uploading ? (
@@ -337,7 +337,7 @@ const ProfilePicture = ({ user: profileUser, updateUser, showDialog, isOwnProfil
               <button
                 onClick={handleCropConfirm}
                 disabled={!completedCrop || uploading}
-                className="flex items-center space-x-2 px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="flex items-center space-x-2 px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {uploading ? (
                   <>

@@ -230,7 +230,7 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
       onClose();
     }
     setIsSubmitting(false);
-    // Removed the navigate("/") call as it's orangeundant and causes the error
+    // Removed the navigate("/") call as it's greenundant and causes the error
   };
 
   if (!isOpen) return null;
@@ -269,7 +269,7 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
                 type="button" 
                 onClick={handleAiAnalyze}
                 disabled={isAnalyzing || !content.trim()}
-                className="flex items-center gap-1 px-3 py-2 bg-gradient-to-r from-orange-500 to-orange-500 text-white rounded-lg hover:from-orange-600 hover:to-orange-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-xs font-medium"
+                className="flex items-center gap-1 px-3 py-2 bg-gradient-to-r from-green-500 to-green-500 text-white rounded-lg hover:from-green-600 hover:to-green-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-xs font-medium"
                 title="Get AI suggestions"
               >
                 {isAnalyzing ? (
@@ -286,30 +286,30 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
               <div className="mb-4 p-3 bg-gray-50 rounded-lg border space-y-3">
                 <div className="flex items-center gap-3">
                   <label className="text-sm text-gray-600">Language</label>
-                  <select value={codeLanguage} onChange={(e) => setCodeLanguage(e.target.value)} className="p-2 border border-gray-300 rounded-lg focus:ring focus:ring-orange-500 focus:border-orange-400 outline-none text-sm">
+                  <select value={codeLanguage} onChange={(e) => setCodeLanguage(e.target.value)} className="p-2 border border-gray-300 rounded-lg focus:ring focus:ring-green-500 focus:border-green-400 outline-none text-sm">
                     {LANG_OPTIONS.map((opt) => (<option key={opt.value} value={opt.value}>{opt.label}</option>))}
                   </select>
                 </div>
-                <textarea value={codeText} onChange={(e) => setCodeText(e.target.value)} rows={6} placeholder="Paste or type your code here..." className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-orange-400 focus:border-orange-500 resize-y outline-none font-mono text-sm" />
+                <textarea value={codeText} onChange={(e) => setCodeText(e.target.value)} rows={6} placeholder="Paste or type your code here..." className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-green-400 focus:border-green-500 resize-y outline-none font-mono text-sm" />
                 <div className="flex gap-2 justify-end">
                   <button type="button" onClick={() => { setCodeText(""); setShowCodeBox(false); }} className="px-3 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50">Cancel</button>
-                  <button type="button" onClick={handleInsertCode} className="px-3 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">Insert code</button>
+                  <button type="button" onClick={handleInsertCode} className="px-3 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">Insert code</button>
                 </div>
               </div>
             )}
 
             {/* Content Textarea */}
             <div className="mb-4">
-              <textarea ref={textareaRef} value={content} onChange={(e) => setContent(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-orange-400 focus:border-orange-500 resize-none outline-none font-mono text-sm" rows="8" placeholder="Share your thoughts..." requiorange />
+              <textarea ref={textareaRef} value={content} onChange={(e) => setContent(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-green-400 focus:border-green-500 resize-none outline-none font-mono text-sm" rows="8" placeholder="Share your thoughts..." requigreen />
             </div>
 
             {/* AI Analysis Panel */}
             {showAiPanel && aiAnalysis && (
-              <div className="mb-4 p-4 bg-gradient-to-br from-orange-50 to-orange-50 border-2 border-orange-200 rounded-lg">
+              <div className="mb-4 p-4 bg-gradient-to-br from-green-50 to-green-50 border-2 border-green-200 rounded-lg">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
-                    <FaMagic className="text-orange-600" size={16} />
-                    <h4 className="font-semibold text-orange-900">AI Analysis</h4>
+                    <FaMagic className="text-green-600" size={16} />
+                    <h4 className="font-semibold text-green-900">AI Analysis</h4>
                   </div>
                   <button 
                     type="button"
@@ -321,12 +321,12 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
                 </div>
 
                 {/* Score and Status */}
-                <div className="flex items-center gap-4 mb-3 pb-3 border-b border-orange-200">
+                <div className="flex items-center gap-4 mb-3 pb-3 border-b border-green-200">
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-gray-700">Quality Score:</span>
                     <span className={`font-bold text-lg ${
                       aiAnalysis.score >= 8 ? 'text-green-600' : 
-                      aiAnalysis.score >= 6 ? 'text-yellow-600' : 'text-orange-600'
+                      aiAnalysis.score >= 6 ? 'text-yellow-600' : 'text-green-600'
                     }`}>
                       {aiAnalysis.score}/10
                     </span>
@@ -335,11 +335,11 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
                     {aiAnalysis.isAppropriate ? (
                       <><FaCheckCircle className="text-green-600" size={14} /><span className="text-sm text-green-700">Appropriate</span></>
                     ) : (
-                      <><FaExclamationTriangle className="text-orange-600" size={14} /><span className="text-sm text-orange-700">Needs Review</span></>
+                      <><FaExclamationTriangle className="text-green-600" size={14} /><span className="text-sm text-green-700">Needs Review</span></>
                     )}
                   </div>
                   <div className="ml-auto">
-                    <span className="text-xs px-2 py-1 bg-orange-200 text-orange-800 rounded-full">
+                    <span className="text-xs px-2 py-1 bg-green-200 text-green-800 rounded-full">
                       {aiAnalysis.tone}
                     </span>
                   </div>
@@ -347,12 +347,12 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
 
                 {/* Warnings */}
                 {aiAnalysis.warningFlags && aiAnalysis.warningFlags.length > 0 && (
-                  <div className="mb-3 p-3 bg-orange-50 border border-orange-200 rounded-lg">
+                  <div className="mb-3 p-3 bg-green-50 border border-green-200 rounded-lg">
                     <div className="flex items-start gap-2">
-                      <FaExclamationTriangle className="text-orange-600 mt-0.5" size={14} />
+                      <FaExclamationTriangle className="text-green-600 mt-0.5" size={14} />
                       <div className="flex-1">
-                        <p className="text-sm font-semibold text-orange-800 mb-1">Concerns:</p>
-                        <ul className="text-xs text-orange-700 space-y-1">
+                        <p className="text-sm font-semibold text-green-800 mb-1">Concerns:</p>
+                        <ul className="text-xs text-green-700 space-y-1">
                           {aiAnalysis.warningFlags.map((warning, idx) => (
                             <li key={idx}>• {warning}</li>
                           ))}
@@ -379,19 +379,19 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
 
                 {/* Apply Enhanced Version */}
                 {aiAnalysis.enhancedVersion && aiAnalysis.enhancedVersion !== content && (
-                  <div className="mt-3 pt-3 border-t border-orange-200">
+                  <div className="mt-3 pt-3 border-t border-green-200">
                     <div className="flex items-center justify-between mb-2">
                       <p className="text-sm font-semibold text-gray-800">Enhanced Version:</p>
                       <button
                         type="button"
                         onClick={applyAiSuggestion}
-                        className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-orange-500 to-orange-500 text-white text-xs rounded-lg hover:from-orange-600 hover:to-orange-600 transition-all"
+                        className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-green-500 to-green-500 text-white text-xs rounded-lg hover:from-green-600 hover:to-green-600 transition-all"
                       >
                         <FaCheckCircle size={12} />
                         Apply
                       </button>
                     </div>
-                    <div className="p-3 bg-white rounded-lg border border-orange-200 max-h-32 overflow-y-auto">
+                    <div className="p-3 bg-white rounded-lg border border-green-200 max-h-32 overflow-y-auto">
                       <p className="text-sm text-gray-700 whitespace-pre-wrap">{aiAnalysis.enhancedVersion}</p>
                     </div>
                   </div>
@@ -420,18 +420,18 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
                       <span className="text-sm text-gray-600">{isEditMode ? 'Change Image' : 'Choose Image'}</span>
                       <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
                     </label>
-                    {imagePreview && (<button type="button" onClick={removeImage} className="text-orange-500 hover:text-orange-700 transition-colors"><FaTimes /></button>)}
+                    {imagePreview && (<button type="button" onClick={removeImage} className="text-green-500 hover:text-green-700 transition-colors"><FaTimes /></button>)}
                   </div>
                 </div>
                 <div className="mb-4">
-                  <select value={tag} onChange={(e) => setTag(e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-orange-500 focus:border-orange-400 outline-none">
+                  <select value={tag} onChange={(e) => setTag(e.target.value)} className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-green-500 focus:border-green-400 outline-none">
                     {getAvailableTags().map((tagOpt) => (<option key={tagOpt.value} value={tagOpt.value}>{tagOpt.label}</option>))}
                   </select>
                 </div>
               </div>
               <div className="flex gap-3">
                 <button type="button" onClick={onClose} className="flex-1 px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors" disabled={isSubmitting}>Cancel</button>
-                <button type="submit" disabled={isSubmitting || !content.trim()} className="flex-1 px-4 py-2 bg-gradient-to-r from-orange-400 to-amber-500 text-white rounded-lg font-medium hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                <button type="submit" disabled={isSubmitting || !content.trim()} className="flex-1 px-4 py-2 bg-gradient-to-r from-green-400 to-amber-500 text-white rounded-lg font-medium hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
                   {isSubmitting ? (<><FaSpinner className="animate-spin" /><span>{isEditMode ? 'Updating...' : 'Posting...'}</span></>) : (<span>{isEditMode ? 'Update Post' : 'Post'}</span>)}
                 </button>
               </div>
@@ -443,7 +443,7 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
       {showEmojiPicker && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[70] p-4">
           <div className="relative bg-white rounded-lg shadow-xl">
-            <button onClick={() => setShowEmojiPicker(false)} className="absolute -top-2 -right-2 bg-orange-500 text-white rounded-full p-1 hover:bg-orange-600 transition-colors z-10"><FaTimes size={12} /></button>
+            <button onClick={() => setShowEmojiPicker(false)} className="absolute -top-2 -right-2 bg-green-500 text-white rounded-full p-1 hover:bg-green-600 transition-colors z-10"><FaTimes size={12} /></button>
             <EmojiPicker onEmojiClick={handleEmojiClick} width={Math.min(350, window.innerWidth - 32)} height={Math.min(450, window.innerHeight - 100)} searchDisabled={false} skinTonesDisabled={false} previewConfig={{ showPreview: false }} />
           </div>
         </div>

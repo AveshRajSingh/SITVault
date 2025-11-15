@@ -262,7 +262,7 @@ const CommentSection = ({ postId, comments, setComments, commentLoading, onNavig
       <div className="flex-1 py-6 md:px-6">
         {commentLoading ? (
           <div className="flex justify-center items-center py-8">
-            <FaSpinner className="animate-spin text-orange-500" size={24} />
+            <FaSpinner className="animate-spin text-green-500" size={24} />
             <span className="ml-2 text-gray-600">Loading comments...</span>
           </div>
         ) : postComments.length === 0 ? (
@@ -354,7 +354,7 @@ const CommentSection = ({ postId, comments, setComments, commentLoading, onNavig
                       : "Write a comment...")
                   : "Only verified users can comment"
               }
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-orange-400 focus:border-orange-500 outline-none resize-y"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-green-400 focus:border-green-500 outline-none resize-y"
             />
             <div className="absolute right-2 bottom-2 flex items-center gap-1">
               <button
@@ -406,7 +406,7 @@ const CommentSection = ({ postId, comments, setComments, commentLoading, onNavig
           <button
             type="submit"
             disabled={submitting || !newComment.trim() || !user?.isAdminVerified}
-            className="bg-orange-400 text-white py-3 px-5 cursor-pointer rounded-lg font-medium hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+            className="bg-green-400 text-white py-3 px-5 cursor-pointer rounded-lg font-medium hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
           >
             {submitting ? (
               <FaSpinner className="animate-spin" size={16} />
@@ -422,7 +422,7 @@ const CommentSection = ({ postId, comments, setComments, commentLoading, onNavig
               <select
                 value={codeLanguage}
                 onChange={(e) => setCodeLanguage(e.target.value)}
-                className="p-2 border border-gray-300 rounded-lg focus:ring focus:ring-orange-500 focus:border-orange-400 outline-none text-sm"
+                className="p-2 border border-gray-300 rounded-lg focus:ring focus:ring-green-500 focus:border-green-400 outline-none text-sm"
               >
                 {LANG_OPTIONS.map(opt => (
                   <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -434,7 +434,7 @@ const CommentSection = ({ postId, comments, setComments, commentLoading, onNavig
               onChange={(e) => setCodeText(e.target.value)}
               rows={6}
               placeholder="Paste or type your code here..."
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-orange-400 focus:border-orange-500 resize-y outline-none font-mono text-sm"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-green-400 focus:border-green-500 resize-y outline-none font-mono text-sm"
             />
             <div className="flex gap-2 justify-end">
               <button
@@ -447,7 +447,7 @@ const CommentSection = ({ postId, comments, setComments, commentLoading, onNavig
               <button
                 type="button"
                 onClick={handleInsertCode}
-                className="px-3 py-2 bg-orange-400 cursor-pointer text-white rounded-md hover:bg-orange-600"
+                className="px-3 py-2 bg-green-400 cursor-pointer text-white rounded-md hover:bg-green-600"
               >
                 Insert code
               </button>

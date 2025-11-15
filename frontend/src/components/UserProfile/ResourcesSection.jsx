@@ -58,9 +58,9 @@ const ResourcesSection = ({ user, isOwnProfile, onEdit }) => {
   const isLoading = localLoading;
 
   return (
-    <div className={`w-full ${isLoading? "bg-white rounded-lg p-4 border border-orange-100 ": "" }`}>
-      <div className="flex items-center justify-between mb-4 border-b border-orange-200 pb-2">
-        <h2 className="text-lg md:text-2xl font-bold text-orange-600 flex items-center gap-2">
+    <div className={`w-full ${isLoading? "bg-white rounded-lg p-4 border border-green-100 ": "" }`}>
+      <div className="flex items-center justify-between mb-4 border-b border-green-200 pb-2">
+        <h2 className="text-lg md:text-2xl font-bold text-green-600 flex items-center gap-2">
           {!isLoading  && <FaBookOpen />}
           {isOwnProfile ? 'Your Resources' : `${user?.fullName}'s Resources`}
         </h2>
@@ -76,7 +76,7 @@ const ResourcesSection = ({ user, isOwnProfile, onEdit }) => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search resources..."
-          className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+          className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
         />
         <button type="submit" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
           <FaSearch />
@@ -94,7 +94,7 @@ const ResourcesSection = ({ user, isOwnProfile, onEdit }) => {
 
       {isLoading ? (
         <div className="flex items-center justify-center h-64">
-          <FaSpinner className="animate-spin text-orange-500 mr-2" size={24} />
+          <FaSpinner className="animate-spin text-green-500 mr-2" size={24} />
           <span className="text-gray-600">Loading resources...</span>
         </div>
       ) : resources.length > 0 ? (

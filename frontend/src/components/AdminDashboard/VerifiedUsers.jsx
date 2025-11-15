@@ -318,7 +318,7 @@ const VerifiedUsers = ({
 
   return (
     <>
-      <div className="bg-white rounded-xl shadow-lg border border-orange-100">
+      <div className="bg-white rounded-xl shadow-lg border border-green-100">
         <div className="p-4 md:p-6 border-gray-200">
           <div className="flex sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center space-x-3">
@@ -359,7 +359,7 @@ const VerifiedUsers = ({
           {verifiedLoading ? (
             <div className="text-center py-12 md:py-16">
               <FaSpinner
-                className="animate-spin text-orange-500 mx-auto mb-4"
+                className="animate-spin text-green-500 mx-auto mb-4"
                 size={32}
                 md:size={40}
               />
@@ -426,13 +426,13 @@ const VerifiedUsers = ({
                             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
                               <Link
                                 to={`/profile/${userItem.username}`}
-                                className="text-base md:text-lg font-semibold text-gray-800 hover:text-orange-600 transition-colors truncate"
+                                className="text-base md:text-lg font-semibold text-gray-800 hover:text-green-600 transition-colors truncate"
                               >
                                 {userItem.fullName}
                               </Link>
                               <Link
                                 to={`/profile/${userItem.username}`}
-                                className="text-sm md:text-md font-semibold text-orange-600 hover:text-orange-700 transition-colors truncate"
+                                className="text-sm md:text-md font-semibold text-green-600 hover:text-green-700 transition-colors truncate"
                               >
                                 @{userItem.username}
                               </Link>
@@ -472,7 +472,7 @@ const VerifiedUsers = ({
                                 <span
                                   className={`px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1 ${
                                     currentUserAdminStatus.role === "superadmin"
-                                      ? "bg-orange-100 text-orange-800"
+                                      ? "bg-green-100 text-green-800"
                                       : "bg-blue-100 text-blue-800"
                                   }`}
                                 >
@@ -647,7 +647,7 @@ const VerifiedUsers = ({
                               disabled={verifiedLoading}
                               className={`px-2 py-1 md:px-3 md:py-2 text-xs md:text-sm font-medium rounded-md ${
                                 pageNumber === pagination.currentPage
-                                  ? "bg-orange-500 text-white"
+                                  ? "bg-green-500 text-white"
                                   : "text-gray-500 bg-white border border-gray-300 hover:bg-gray-50"
                               } disabled:opacity-50 disabled:cursor-not-allowed`}
                             >

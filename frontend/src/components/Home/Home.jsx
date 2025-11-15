@@ -97,9 +97,9 @@ function Home() {
 
   if (authLoading) {
     return (
-      <div className="pt-20 min-h-screen bg-orange-50 flex items-center justify-center">
+      <div className="pt-20 min-h-screen bg-green-50 flex items-center justify-center">
         <div className="flex flex-col items-center">
-          <FaSpinner className="animate-spin text-orange-500" size={32} />
+          <FaSpinner className="animate-spin text-green-500" size={32} />
           <span className="mt-4 text-gray-600">Loading...</span>
         </div>
       </div>
@@ -112,7 +112,7 @@ function Home() {
 
   return (
     <div className="post-container">
-      <div className="pt-20 min-h-screen bg-orange-50">
+      <div className="pt-20 min-h-screen bg-green-50">
         <div className="flex flex-col md:flex-row gap-6 md:max-w-[90%] xl:max-w-[80%] mx-0 md:mx-auto md:pb-8">
           <div className="md:w-2/3 h-full flex flex-col gap-4">
             <CreatePostButton
@@ -122,18 +122,18 @@ function Home() {
             {!isSuspended && (
               <>
                 <div className="hidden md:flex flex-wrap px-3 py-3 md:py-0 border-y md:border-none border-gray-300 bg-white md:bg-white/0 items-center gap-2">
-                  <button className={`px-3 py-1 rounded-full text-md border transition cursor-pointer ${!tag ? 'bg-orange-500 text-white border-orange-500' : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'}`} onClick={() => changeTag('')}>All</button>
-                  {allowedTags.map(t => (<button key={t} className={`px-3 py-1 rounded-full text-md capitalize border transition cursor-pointer ${tag === t ? 'bg-orange-500 text-white border-orange-500' : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'}`} onClick={() => changeTag(t)}>{t}</button>))}
+                  <button className={`px-3 py-1 rounded-full text-md border transition cursor-pointer ${!tag ? 'bg-green-500 text-white border-green-500' : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'}`} onClick={() => changeTag('')}>All</button>
+                  {allowedTags.map(t => (<button key={t} className={`px-3 py-1 rounded-full text-md capitalize border transition cursor-pointer ${tag === t ? 'bg-green-500 text-white border-green-500' : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'}`} onClick={() => changeTag(t)}>{t}</button>))}
                 </div>
                 <div className="z-20 md:hidden ml-auto px-3 w-1/2 border-gray-300 relative" data-dropdown="tag-selector">
-                  <button className="w-full px-4 py-2 text-left bg-white border border-gray-300 rounded-lg flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-orange-500" onClick={() => setShowTagDropdown(!showTagDropdown)}>
+                  <button className="w-full px-4 py-2 text-left bg-white border border-gray-300 rounded-lg flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-green-500" onClick={() => setShowTagDropdown(!showTagDropdown)}>
                     <span className="capitalize">{tag || 'All'}</span>
                     <svg className={`w-5 h-5 transition-transform ${showTagDropdown ? 'transform rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                   </button>
                   {showTagDropdown && (
                     <div className="absolute top-full left-3 right-3 z-10 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg">
-                      <button className={`w-full px-4 py-2 text-left hover:bg-gray-50 first:rounded-t-lg ${!tag ? 'bg-orange-50 text-orange-600' : ''}`} onClick={() => { changeTag(''); setShowTagDropdown(false); }}>All</button>
-                      {allowedTags.map(t => (<button key={t} className={`w-full px-4 py-2 text-left capitalize hover:bg-gray-50 last:rounded-b-lg ${tag === t ? 'bg-orange-50 text-orange-600' : ''}`} onClick={() => { changeTag(t); setShowTagDropdown(false); }}>{t}</button>))}
+                      <button className={`w-full px-4 py-2 text-left hover:bg-gray-50 first:rounded-t-lg ${!tag ? 'bg-green-50 text-green-600' : ''}`} onClick={() => { changeTag(''); setShowTagDropdown(false); }}>All</button>
+                      {allowedTags.map(t => (<button key={t} className={`w-full px-4 py-2 text-left capitalize hover:bg-gray-50 last:rounded-b-lg ${tag === t ? 'bg-green-50 text-green-600' : ''}`} onClick={() => { changeTag(t); setShowTagDropdown(false); }}>{t}</button>))}
                     </div>
                   )}
                 </div>

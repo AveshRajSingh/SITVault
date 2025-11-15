@@ -43,9 +43,9 @@ function MeetTheDevs() {
     <div className="font-Jost relative slide-in">
       {/* Blurry animated background abstracts for aesthetics */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Orange blob */}
+        {/* green blob */}
         <div
-          className="absolute top-[20%] left-[8%] w-64 h-64 rounded-full bg-orange-400/30 animate-pulse blur-xl"
+          className="absolute top-[20%] left-[8%] w-64 h-64 rounded-full bg-green-400/30 animate-pulse blur-xl"
           style={{ animationDuration: "5s" }}
         ></div>
 

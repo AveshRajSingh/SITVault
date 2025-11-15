@@ -47,14 +47,14 @@ const SuspendUserModal = ({ isOpen, user, onClose, onSubmit, submitting }) => {
             <div className="min-w-0 flex-1">
               <Link 
                 to={`/profile/${user.username}`}
-                className="font-semibold text-gray-800 hover:text-orange-600 transition-colors text-sm md:text-base truncate block"
+                className="font-semibold text-gray-800 hover:text-green-600 transition-colors text-sm md:text-base truncate block"
               >
                 {user.fullName}
               </Link>
               <p className="text-xs md:text-sm text-gray-600 truncate">
                 <Link 
                   to={`/profile/${user.username}`}
-                  className="hover:text-orange-600 transition-colors"
+                  className="hover:text-green-600 transition-colors"
                 >
                   @{user.username}
                 </Link> • {user.email}

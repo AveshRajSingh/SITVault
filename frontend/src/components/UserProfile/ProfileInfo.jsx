@@ -98,10 +98,10 @@ const ProfileInfo = ({ user, isAdmin, adminRole, showDialog, isOwnProfile = true
         {isAdmin && adminRole && (
           <div className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${
             adminRole === "superadmin" 
-              ? "bg-gradient-to-r from-orange-100 to-orange-200 text-orange-700 border border-orange-300" 
+              ? "bg-gradient-to-r from-green-100 to-green-200 text-green-700 border border-green-300" 
               : "bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 border border-blue-300"
           }`}>
-            <FaCrown className={adminRole === "superadmin" ? "text-orange-500" : "text-blue-500"} size={12} />
+            <FaCrown className={adminRole === "superadmin" ? "text-green-500" : "text-blue-500"} size={12} />
             <span className="capitalize">{adminRole}</span>
           </div>
         )}
@@ -125,7 +125,7 @@ const ProfileInfo = ({ user, isAdmin, adminRole, showDialog, isOwnProfile = true
                 value={bioText}
                 onChange={handleBioChange}
                 placeholder="Tell us about yourself..."
-                className="w-full p-3 border border-gray-200 rounded-xl resize-none focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all duration-200"
+                className="w-full p-3 border border-gray-200 rounded-xl resize-none focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all duration-200"
                 rows={3}
                 disabled={loading}
               />
@@ -154,7 +154,7 @@ const ProfileInfo = ({ user, isAdmin, adminRole, showDialog, isOwnProfile = true
               <button
                 onClick={handleSaveBio}
                 disabled={loading || getRemainingBytes() < 0 || !bioText.trim()}
-                className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 disabled:opacity-50 transition-colors min-w-[100px] justify-center"
+                className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 disabled:opacity-50 transition-colors min-w-[100px] justify-center"
               >
                 {loading ? (
                   <>
@@ -178,7 +178,7 @@ const ProfileInfo = ({ user, isAdmin, adminRole, showDialog, isOwnProfile = true
             {isOwnProfile && (
               <button
                 onClick={handleEditBio}
-                className="opacity-0 group-hover:opacity-100 flex items-center gap-1 text-sm text-orange-600 hover:text-orange-700 transition-all duration-200 mx-auto"
+                className="opacity-0 group-hover:opacity-100 flex items-center gap-1 text-sm text-green-600 hover:text-green-700 transition-all duration-200 mx-auto"
               >
                 <FaPen size={12} />
                 Edit bio
@@ -193,13 +193,13 @@ const ProfileInfo = ({ user, isAdmin, adminRole, showDialog, isOwnProfile = true
         {/* Only show email for own profile */}
         {isOwnProfile && (
           <div className="flex items-center justify-center gap-2 text-gray-600">
-            <FaEnvelope className="text-orange-500" size={16} />
+            <FaEnvelope className="text-green-500" size={16} />
             <span>{user?.email || "No email"}</span>
           </div>
         )}
         
         <div className="flex items-center justify-center gap-2 text-gray-600">
-          <FaCalendarAlt className="text-orange-500" size={16} />
+          <FaCalendarAlt className="text-green-500" size={16} />
           <span>Joined {formatJoinDate(user?.createdAt)}</span>
         </div>
       </div>

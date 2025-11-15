@@ -9,14 +9,14 @@ function Footer() {
             <span className="text-3xl md:text-4xl text-gray-600 font-Saira font-bold">
               SIT
             </span>
-            <span className="text-3xl md:text-4xl text-orange-400 font-Saira font-bold">
+            <span className="text-3xl md:text-4xl text-green-400 font-Saira font-bold">
               Vault
             </span>
           </Link>
           <div>
             From{" "}
             <a
-              className="hover:text-orange-400 transition-colors duration-150"
+              className="hover:text-green-400 transition-colors duration-150"
               href="https://www.sityog.edu.in/"
               target="_blank"
             >

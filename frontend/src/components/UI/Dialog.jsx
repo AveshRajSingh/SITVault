@@ -29,9 +29,9 @@ const Dialog = ({ isOpen, onClose, title, message, type = 'info', onConfirm, sho
       case 'confirm':
         return {
           icon: '?',
-          bgColor: 'bg-orange-100',
-          iconColor: 'text-orange-600',
-          buttonColor: 'bg-orange-600 hover:bg-orange-700'
+          bgColor: 'bg-green-100',
+          iconColor: 'text-green-600',
+          buttonColor: 'bg-green-600 hover:bg-green-700'
         };
       default:
         return {

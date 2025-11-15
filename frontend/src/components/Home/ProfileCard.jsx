@@ -27,10 +27,10 @@ const ProfileCard = ({ user, isAdmin, adminLoading }) => {
   const totalReputation = getTotalReputation(user._id);
 
   return (
-    <div className="bg-white rounded-2xl shadow-md border border-orange-100 p-6">
+    <div className="bg-white rounded-2xl shadow-md border border-green-100 p-6">
       <div className="flex flex-col items-center">
         <div className="relative">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-300 to-amber-400 blur-sm -z-10 transform scale-110"></div>
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-300 to-amber-400 blur-sm -z-10 transform scale-110"></div>
           {user?.profilePicture?.url ? (
             <img
               src={user.profilePicture.url}
@@ -57,13 +57,13 @@ const ProfileCard = ({ user, isAdmin, adminLoading }) => {
         )}
         <Link 
           to={"/profile"} 
-          className="text-center mt-4 w-full bg-gradient-to-r from-orange-400 to-amber-500 text-white py-2 rounded-lg font-medium hover:opacity-90 transition-all"
+          className="text-center mt-4 w-full bg-gradient-to-r from-green-400 to-amber-500 text-white py-2 rounded-lg font-medium hover:opacity-90 transition-all"
         >
           Your Profile
         </Link>
         <Link 
           to={"/leaderboard"} 
-          className="text-center mt-2 w-full bg-gradient-to-r from-orange-400 to-amber-500 text-white py-2 rounded-lg font-medium hover:opacity-90 transition-all"
+          className="text-center mt-2 w-full bg-gradient-to-r from-green-400 to-amber-500 text-white py-2 rounded-lg font-medium hover:opacity-90 transition-all"
         >
           Leaderboard
         </Link>

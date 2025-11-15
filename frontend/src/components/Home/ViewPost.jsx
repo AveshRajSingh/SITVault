@@ -98,7 +98,7 @@ function ViewPost({
               <h4 className="font-semibold text-gray-800">
                 <Link
                   to={`/profile/${currentPost.author.username}`}
-                  className="font-semibold text-gray-800 hover:text-orange-600 transition-colors"
+                  className="font-semibold text-gray-800 hover:text-green-600 transition-colors"
                 >
                   {currentPost.author?.fullName ||
                     currentPost.author?.username ||

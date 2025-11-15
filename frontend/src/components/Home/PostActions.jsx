@@ -14,7 +14,7 @@ const PostActions = ({ post, comments, onShowComments }) => {
         />
         <button 
           onClick={() => onShowComments(post._id)}
-          className="flex items-center gap-3 hover:text-orange-500 transition-colors cursor-pointer bg-gray-50 p-2 px-4 rounded-xl outline"
+          className="flex items-center gap-3 hover:text-green-500 transition-colors cursor-pointer bg-gray-50 p-2 px-4 rounded-xl outline"
           title='View Comments'
         >
           <FaComments /> 

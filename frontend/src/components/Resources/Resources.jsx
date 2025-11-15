@@ -89,7 +89,7 @@ function Resources() {
 
   if (!isAuthenticated) {
     return (
-      <div className='pt-20 h-screen bg-orange-50'>
+      <div className='pt-20 h-screen bg-green-50'>
         <div className='md:max-w-[90%] h-full xl:max-w-[80%] mx-auto flex items-center justify-center'>
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mt-4 text-4xl font-bold text-gray-900 sm:text-5xl">
@@ -105,15 +105,15 @@ function Resources() {
   }
 
   return (
-    <div className='pt-16 min-h-screen bg-orange-50'>
+    <div className='pt-16 min-h-screen bg-green-50'>
       <div className='md:max-w-[90%] xl:max-w-[80%] mx-auto px-4 md:px-0 py-8'>
         {/* Header and Submission button */}
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl md:text-4xl font-bold text-orange-600">Resources</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-green-600">Resources</h1>
           {!isSuspended && user.isAdminVerified && (
             <button
               onClick={() => setShowSubmitModal(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
             >
               <FaPlus />
               Submit Resource
@@ -132,7 +132,7 @@ function Resources() {
                   onClick={() => handleCategoryChange(cat)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     activeCategory === cat
-                      ? 'bg-orange-500 text-white'
+                      ? 'bg-green-500 text-white'
                       : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                   }`}
                 >
@@ -145,7 +145,7 @@ function Resources() {
                   type="checkbox"
                   checked={adminOnly}
                   onChange={handleAdminOnlyToggle}
-                  className="form-checkbox text-orange-500"
+                  className="form-checkbox text-green-500"
                 />
                 <FaUserShield className="text-gray-600" />
                 <span className="text-gray-600">Admin Resources</span>
@@ -159,7 +159,7 @@ function Resources() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search resources..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
               />
               <button type="submit" className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
                 <FaSearch />
@@ -180,7 +180,7 @@ function Resources() {
         {/* Resource List */}
         {loading ? (
           <div className="flex justify-center items-center py-12">
-            <FaSpinner className="animate-spin text-orange-500" size={32} />
+            <FaSpinner className="animate-spin text-green-500" size={32} />
             <span className="ml-4 text-gray-600">Loading resources...</span>
           </div>
         ) : resources.length > 0 ? (

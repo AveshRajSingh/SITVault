@@ -75,7 +75,7 @@ const SuspendedUsers = ({ showDialog, adminStatus, onCountChange, onUpdateUserSu
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg border border-orange-100 p-4 md:p-6">
+    <div className="bg-white rounded-xl shadow-lg border border-green-100 p-4 md:p-6">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-3">
         <div className="bg-red-100 p-2 rounded-lg">
@@ -105,7 +105,7 @@ const SuspendedUsers = ({ showDialog, adminStatus, onCountChange, onUpdateUserSu
 
       {loading ? (
         <div className="text-center py-12" aria-busy="true">
-          <FaSpinner className="animate-spin text-orange-500 mx-auto mb-4" size={32} />
+          <FaSpinner className="animate-spin text-green-500 mx-auto mb-4" size={32} />
           <p className="text-gray-600">Loading suspended users...</p>
         </div>
       ) : filteredUsers.length === 0 ? (
@@ -154,14 +154,14 @@ const SuspendedUsers = ({ showDialog, adminStatus, onCountChange, onUpdateUserSu
                     <div className="flex items-center gap-2 flex-wrap">
                       <Link
                         to={`/profile/${u.username}`}
-                        className="font-semibold text-gray-800 hover:text-orange-600 transition-colors truncate"
+                        className="font-semibold text-gray-800 hover:text-green-600 transition-colors truncate"
                         title={displayName}
                       >
                         {displayName}
                       </Link>
                       <Link
                         to={`/profile/${u.username}`}
-                        className="text-orange-600 font-semibold hover:text-orange-700 transition-colors text-sm"
+                        className="text-green-600 font-semibold hover:text-green-700 transition-colors text-sm"
                         title={`@${u.username}`}
                       >
                         @{u.username}
@@ -172,9 +172,9 @@ const SuspendedUsers = ({ showDialog, adminStatus, onCountChange, onUpdateUserSu
 
                     <div className="mt-1">
                       {u.suspensionEnd ? (
-                        <div className="text-xs text-orange-500">Suspended until {new Date(u.suspensionEnd).toLocaleString()}</div>
+                        <div className="text-xs text-green-500">Suspended until {new Date(u.suspensionEnd).toLocaleString()}</div>
                       ) : (
-                        <div className="text-xs text-orange-500">Suspended permanently</div>
+                        <div className="text-xs text-green-500">Suspended permanently</div>
                       )}
                       {u.suspensionReason && (
                         <div className="text-xs text-gray-500 mt-1">Reason: {u.suspensionReason}</div>

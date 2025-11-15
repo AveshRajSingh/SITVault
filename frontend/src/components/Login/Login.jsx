@@ -62,13 +62,13 @@ function Login() {
   };
 
   return (
-    <div className="font-Jost flex h-screen justify-center items-center text-gray-600 bg-orange-100/30">
-      <div className="bg-white p-6 px-8 rounded-lg border min-w-[90%] sm:min-w-[70%] md:min-w-[50%] lg:min-w-[35%] border-orange-400 shadow-lg">
-        <div className="font-Saira text-3xl text-orange-400 text-center font-medium">
+    <div className="font-Jost flex h-screen justify-center items-center text-gray-600 bg-green-100/30">
+      <div className="bg-white p-6 px-8 rounded-lg border min-w-[90%] sm:min-w-[70%] md:min-w-[50%] lg:min-w-[35%] border-green-400 shadow-lg">
+        <div className="font-Saira text-3xl text-green-400 text-center font-medium">
           <span className="text-3xl md:text-4xl text-gray-600 font-Saira font-bold">
             SIT
           </span>
-          <span className="text-3xl md:text-4xl text-orange-400 font-Saira font-bold">
+          <span className="text-3xl md:text-4xl text-green-400 font-Saira font-bold">
             Vault
           </span>
         </div>
@@ -90,7 +90,7 @@ function Login() {
                 name="emailOrUsername"
                 value={formData.emailOrUsername}
                 onChange={handleInputChange}
-                className="bg-gray-50 caret-orange-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-orange-400 focus:shadow-lg shadow-orange-400/10"
+                className="bg-gray-50 caret-green-400 px-4 py-2 rounded-md outline-none border border-gray-300 focus:border-green-400 focus:shadow-lg shadow-green-400/10"
                 type="text"
                 placeholder="Enter your email or username"
                 required
@@ -101,13 +101,13 @@ function Login() {
               <label className="font-medium" htmlFor="password">
                 Password:
               </label>
-              <div className="flex px-4 py-2 gap-x-1 rounded-md bg-gray-50 border border-gray-300 has-focus:border-orange-400 has-focus:shadow-lg shadow-orange-400/10">
+              <div className="flex px-4 py-2 gap-x-1 rounded-md bg-gray-50 border border-gray-300 has-focus:border-green-400 has-focus:shadow-lg shadow-green-400/10">
                 <input
                   id="password"
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className="outline-none w-full caret-orange-400"
+                  className="outline-none w-full caret-green-400"
                   type={isVisible ? "text" : "password"}
                   placeholder="Enter your password"
                   required
@@ -118,7 +118,7 @@ function Login() {
                   onClick={() => setIsVisible((prev) => !prev)}
                 >
                   <svg
-                    className="fill-current hover:fill-orange-400 transition-all duration-200 ease-in-out cursor-pointer"
+                    className="fill-current hover:fill-green-400 transition-all duration-200 ease-in-out cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
                     viewBox="0 -960 960 960"
@@ -133,12 +133,12 @@ function Login() {
                   </svg>
                 </div>
               </div>
-              <Link to="/forgot-password" className="text-sm text-orange-400 text-end py-3 cursor-pointer hover:text-orange-500 transition-all duration-200 block">
+              <Link to="/forgot-password" className="text-sm text-green-400 text-end py-3 cursor-pointer hover:text-green-500 transition-all duration-200 block">
                 Forgot Password?
               </Link>
             </div>
             <button type="submit" disabled={loading}>
-              <div className={`${loading ? 'bg-gray-400' : 'bg-orange-400 hover:bg-orange-500'} shadow-md hover:shadow-lg font-Saira text-lg sm:text-xl text-white px-4 py-2 rounded-md mt-2 transition-all duration-200 ease-in-out cursor-pointer`}>
+              <div className={`${loading ? 'bg-gray-400' : 'bg-green-400 hover:bg-green-500'} shadow-md hover:shadow-lg font-Saira text-lg sm:text-xl text-white px-4 py-2 rounded-md mt-2 transition-all duration-200 ease-in-out cursor-pointer`}>
                 {loading ? 'Logging in...' : 'Log In'}
               </div>
             </button>
@@ -146,7 +146,7 @@ function Login() {
           <div className="mt-6 text-center text-sm sm:text-lg">
             Don't have an account?{" "}
             <Link to="/signup">
-              <span className="text-orange-400 hover:text-orange-500 cursor-pointer">
+              <span className="text-green-400 hover:text-green-500 cursor-pointer">
                 Sign Up
               </span>
             </Link>

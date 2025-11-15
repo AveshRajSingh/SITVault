@@ -43,20 +43,20 @@ const UnverifiedUsers = ({
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg border border-orange-100">
+    <div className="bg-white rounded-xl shadow-lg border border-green-100">
       <div className="p-4 md:p-6 border-gray-200">
         <div className="flex gap-2 sm:flex-row items-start sm:items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="bg-orange-100 p-2 rounded-lg">
-              <MdPendingActions className="text-orange-600" size={22} />
+            <div className="bg-green-100 p-2 rounded-lg">
+              <MdPendingActions className="text-green-600" size={22} />
             </div>
               <h2 className="text-lg md:text-2xl font-bold text-gray-800">
                 Pending User
               </h2>
           </div>
 
-          <div className="bg-orange-50 px-3 py-1 rounded-lg">
-            <span className="text-orange-600 font-semibold text-sm">
+          <div className="bg-green-50 px-3 py-1 rounded-lg">
+            <span className="text-green-600 font-semibold text-sm">
               {unverifiedUsers.length} {unverifiedUsers.length === 1 ? 'User' : 'Users'}
             </span>
           </div>
@@ -106,7 +106,7 @@ const UnverifiedUsers = ({
               return (
                 <div
                   key={key}
-                  className="bg-gray-50 rounded-lg p-4 md:p-6 border border-gray-200 hover:border-orange-200 transition-colors"
+                  className="bg-gray-50 rounded-lg p-4 md:p-6 border border-gray-200 hover:border-green-200 transition-colors"
                 >
                   {/* Mobile-first: column; becomes row on lg */}
                   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
@@ -129,14 +129,14 @@ const UnverifiedUsers = ({
                         <div className="flex items-center gap-2 flex-wrap">
                           <Link
                             to={`/profile/${userItem.username}`}
-                            className="text-sm md:text-lg font-semibold text-gray-800 hover:text-orange-600 transition-colors truncate"
+                            className="text-sm md:text-lg font-semibold text-gray-800 hover:text-green-600 transition-colors truncate"
                             title={displayName}
                           >
                             {displayName}
                           </Link>
                           <Link
                             to={`/profile/${userItem.username}`}
-                            className="text-sm md:text-md font-semibold text-orange-600 hover:text-orange-700 transition-colors"
+                            className="text-sm md:text-md font-semibold text-green-600 hover:text-green-700 transition-colors"
                             title={`@${userItem.username}`}
                           >
                             @{userItem.username}
@@ -179,7 +179,7 @@ const UnverifiedUsers = ({
                         disabled={actionLoading}
                         aria-disabled={actionLoading}
                         aria-label={`Approve ${userItem.email}`}
-                        className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 bg-orange-400 text-white px-4 py-2 rounded-lg hover:bg-orange-500 disabled:opacity-50 disabled:cursor-not-allowed transition-transform hover:scale-102"
+                        className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 bg-green-400 text-white px-4 py-2 rounded-lg hover:bg-green-500 disabled:opacity-50 disabled:cursor-not-allowed transition-transform hover:scale-102"
                       >
                         {verifyActive ? (
                           <>

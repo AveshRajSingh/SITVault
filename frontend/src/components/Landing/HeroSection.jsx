@@ -21,13 +21,13 @@ function HeroSection() {
           <div className='flex justify-center space-y-4 
           sm:space-y-0 text-center space-x-4 md:space-x-6 mt-6'>
             <Link to={"/login"}>
-            <div className='bg-white w-30 p-2 md:p-3 hover:drop-shadow-2xl duration-400 text-orange-400 hover:text-white outline hover:outline-none outline-orange-400 font-medium 
+            <div className='bg-white w-30 p-2 md:p-3 hover:drop-shadow-2xl duration-400 text-green-400 hover:text-white outline hover:outline-none outline-green-400 font-medium 
             px-4 md:px-6 rounded-full text-lg md:text-xl hover:bg-gray-600 cursor-pointer'>
               Log In
             </div>
             </Link>
             <Link to={"/signup"}>
-            <div className='bg-orange-400 w-30 p-2 md:p-3 hover:drop-shadow-2xl duration-400 text-white font-medium 
+            <div className='bg-green-400 w-30 p-2 md:p-3 hover:drop-shadow-2xl duration-400 text-white font-medium 
             px-4 md:px-6 rounded-full text-lg md:text-xl hover:bg-gray-600 cursor-pointer'>
               Sign Up
             </div>

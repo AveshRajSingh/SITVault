@@ -499,7 +499,7 @@ function Syllabus() {
 
   if (!isAuthenticated) {
     return (
-      <div className='pt-20 h-screen bg-orange-50'>
+      <div className='pt-20 h-screen bg-green-50'>
         <div className='md:max-w-[90%] h-full xl:max-w-[80%] mx-auto flex items-center justify-center'>
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="mt-4 text-4xl font-bold text-gray-900 sm:text-5xl">
@@ -520,13 +520,13 @@ function Syllabus() {
     : [];
 
   return (
-    <div className='pt-16 min-h-screen bg-orange-50'>
+    <div className='pt-16 min-h-screen bg-green-50'>
       <div className='md:max-w-[90%] xl:max-w-[80%] mx-auto px-4 md:px-0 py-8'>
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center gap-3">
-            <FaGraduationCap className="text-4xl text-orange-600" />
-            <h1 className="text-3xl md:text-4xl font-bold text-orange-600">Syllabus</h1>
+            <FaGraduationCap className="text-4xl text-green-600" />
+            <h1 className="text-3xl md:text-4xl font-bold text-green-600">Syllabus</h1>
           </div>
           {selectedProgram && (
             <button
@@ -548,7 +548,7 @@ function Syllabus() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <button
                   onClick={() => handleProgramSelect('btech')}
-                  className="p-6 bg-gradient-to-r from-orange-400 to-orange-500 text-white rounded-lg hover:from-orange-500 hover:to-orange-600 transition-all transform hover:scale-105 shadow-lg"
+                  className="p-6 bg-gradient-to-r from-green-400 to-green-500 text-white rounded-lg hover:from-green-500 hover:to-green-600 transition-all transform hover:scale-105 shadow-lg"
                 >
                   <div className="text-2xl font-bold mb-2">B.Tech</div>
                   <div className="text-sm opacity-90">Bachelor of Technology (8 Semesters)</div>
@@ -575,7 +575,7 @@ function Syllabus() {
                   <button
                     key={branch.id}
                     onClick={() => handleBranchSelect(branch.id)}
-                    className="p-6 bg-gradient-to-br from-orange-400 to-orange-500 text-white rounded-lg hover:from-orange-500 hover:to-orange-600 transition-all transform hover:scale-105 shadow-lg"
+                    className="p-6 bg-gradient-to-br from-green-400 to-green-500 text-white rounded-lg hover:from-green-500 hover:to-green-600 transition-all transform hover:scale-105 shadow-lg"
                   >
                     <div className="text-xl font-bold mb-2">{branch.code}</div>
                     <div className="text-sm opacity-90">{branch.name}</div>
@@ -622,7 +622,7 @@ function Syllabus() {
                         <div className="font-bold text-gray-800">{subject.name}</div>
                         <div className="text-sm text-gray-600">Code: {subject.code}</div>
                       </div>
-                      <div className="text-orange-600">
+                      <div className="text-green-600">
                         {expandedSubject === subject.id ? <FaChevronUp /> : <FaChevronDown />}
                       </div>
                     </button>

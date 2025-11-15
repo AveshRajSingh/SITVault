@@ -45,18 +45,18 @@ function LeaderBoard() {
     if (index === 1)
       return "shadow-[0_0_10px_2px_rgba(128,128,128,0.2)] border-gray-400";
     if (index === 2)
-      return "shadow-[0_0_12px_3px_rgba(255,87,34,0.1)] border-orange-300";
+      return "shadow-[0_0_12px_3px_rgba(255,87,34,0.1)] border-green-300";
     return "border-gray-200";
   };
 
   return (
-    <div className="bg-orange-50 min-h-screen pt-16">
+    <div className="bg-green-50 min-h-screen pt-16">
       <div className="md:max-w-[90%] h-full lg:max-w-[80%] mx-auto">
         <div className="mx-auto px-2 pb-4 max-w-3xl text-center">
           {/* Header */}
           <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-3">
             <div className="text-start">
-              <h1 className="mt-4 text-3xl font-bold text-orange-600">
+              <h1 className="mt-4 text-3xl font-bold text-green-600">
                 Leaderboard
               </h1>
               <p className="text-gray-600">Top 20 users by reputation</p>
@@ -66,7 +66,7 @@ function LeaderBoard() {
               <button
                 onClick={handleRefresh}
                 disabled={leaderboardLoading || isRefreshing}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border bg-white text-sm font-medium shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-orange-300 disabled:opacity-60"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border bg-white text-sm font-medium shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-green-300 disabled:opacity-60"
                 aria-label="Refresh leaderboard"
                 title="Refresh leaderboard"
               >
@@ -155,7 +155,7 @@ function LeaderBoard() {
                 to={`/profile/${user.username}`}>
                   <div
                     key={user._id || user.userId}
-                    className={`bg-white rounded-xl p-5 my-2 shadow-lg hover:shadow-xl transition-colors hover:bg-orange-50 focus-within:ring-2 focus-within:ring-orange-200 border ${
+                    className={`bg-white rounded-xl p-5 my-2 shadow-lg hover:shadow-xl transition-colors hover:bg-green-50 focus-within:ring-2 focus-within:ring-green-200 border ${
                       isTopThree ? getGlowBorderClass(index) : "border-gray-200"
                     }`}
                     tabIndex={0}
@@ -168,7 +168,7 @@ function LeaderBoard() {
                         <div
                           className={`flex flex-col items-center justify-center font-bold px-2 ${
                             isTopThree
-                              ? "text-orange-600"
+                              ? "text-green-600"
                               : "text-gray-600"
                           }`}
                         >
@@ -204,7 +204,7 @@ function LeaderBoard() {
                         <div className="flex-1 text-left">
                           <div
                             className={`font-semibold text-md md:text-lg truncate max-w-[18rem] ${
-                              isTopThree ? "text-orange-600" : "text-gray-800"
+                              isTopThree ? "text-green-600" : "text-gray-800"
                             }`}
                             title={user.fullName || "Unknown"}
                           >
@@ -223,7 +223,7 @@ function LeaderBoard() {
                       <div className="text-right">
                         <div
                           className={`inline font-semibold md:text-xl ${
-                            isTopThree ? "text-orange-600" : "text-orange-500"
+                            isTopThree ? "text-green-600" : "text-green-500"
                           }`}
                         >
                           Reputation: {userReputation}
@@ -233,10 +233,10 @@ function LeaderBoard() {
                             ? `${reputationPercentage}% of top`
                             : "—"}
                         </div>
-                        <div className="h-2 bg-orange-50 rounded-full overflow-hidden mt-1">
+                        <div className="h-2 bg-green-50 rounded-full overflow-hidden mt-1">
                           <div
                             style={{ width: `${reputationPercentage}%` }}
-                            className="h-2 rounded-full bg-orange-300"
+                            className="h-2 rounded-full bg-green-300"
                             aria-hidden
                           />
                         </div>
