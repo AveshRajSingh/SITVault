@@ -20,7 +20,7 @@ const Navigation = () => {
       </NavLink>*/}
 
       <NavLink
-        to="/Resources"
+        to="/resources"
         className={({ isActive }) =>
           `${
             isActive ? "text-orange-400" : "text-gray-600"

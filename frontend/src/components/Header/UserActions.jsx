@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { FiUser, FiSettings, FiChevronDown, FiLogOut } from 'react-icons/fi';
 import { FaRegUserCircle } from 'react-icons/fa';
+import NotificationBell from './NotificationBell';
 
 const UserActions = () => {
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
@@ -40,7 +41,9 @@ const UserActions = () => {
   return (
     <div className="hidden md:flex items-center space-x-4">
       {isAuthenticated ? (
-        <div className="relative" ref={dropdownRef}>
+        <>
+          <NotificationBell />
+          <div className="relative" ref={dropdownRef}>
           <button
             onClick={toggleProfileDropdown}
             className="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition-colors"
@@ -103,6 +106,7 @@ const UserActions = () => {
             </div>
           )}
         </div>
+        </>
       ) : (
         <div className="flex space-x-2">
           <Link

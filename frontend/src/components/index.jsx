@@ -15,6 +15,7 @@ import Settings from "./Settings/Settings";
 import LeaderBoard from "./LeaderBoard/LeaderBoard";
 import CodeEnhancer from "./UI/CodeEnhancer";
 import Loading from "./UI/Loading";
+import Notifications from "./Notifications/Notifications";
 
 export {
   Header,
@@ -34,4 +35,5 @@ export {
   CodeEnhancer,
   LeaderBoard,
   Loading,
+  Notifications,
 };

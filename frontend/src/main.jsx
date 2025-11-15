@@ -22,6 +22,7 @@ import {
   ForgotPassword,
   Settings,
   LeaderBoard,
+  Notifications,
 } from "./components";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { PostsProvider } from "./context/PostsContext.jsx";
@@ -46,6 +47,7 @@ const router = createBrowserRouter(
       <Route path="settings" element={<Settings />} />
       <Route path="admin-dashboard" element={<AdminDashboard />} />
       <Route path="leaderboard" element={<LeaderBoard />} />
+      <Route path="notifications" element={<Notifications />} />
     </Route>
   )
 );
