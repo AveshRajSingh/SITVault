@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { FaEllipsisV, FaTrash, FaEdit } from 'react-icons/fa';
+import { FaEllipsisV, FaTrash, FaEdit, FaMagic } from 'react-icons/fa';
 import { usePostUI } from '../../context/PostUIContext';
 
 const PostMenu = ({ post }) => {
-  const { openMenuPostId, toggleMenu, closeMenu, canEditPost, canDeletePost, requestEdit, requestDelete } = usePostUI();
+  const { openMenuPostId, toggleMenu, closeMenu, canEditPost, canDeletePost, requestEdit, requestDelete, requestAskAI } = usePostUI();
 
   // Close on ESC
   useEffect(() => {
@@ -16,7 +16,8 @@ const PostMenu = ({ post }) => {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [openMenuPostId, post._id, closeMenu]);
 
-  if (!canDeletePost(post) && !canEditPost(post)) return null;
+  // Show menu if user can edit/delete OR always show for Ask AI
+  const showMenu = canDeletePost(post) || canEditPost(post);
 
   return (
     <div className="relative">
@@ -34,7 +35,20 @@ const PostMenu = ({ post }) => {
   <div
           className="absolute z-50 right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg min-w-[140px] animate-fade-in"
         >
-          {canEditPost(post) && (
+          {/* Ask AI - Available to everyone */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              requestAskAI(post);
+              closeMenu();
+            }}
+            className="w-full flex items-center gap-2 px-4 py-2 text-purple-600 hover:bg-purple-50 transition-colors text-sm cursor-pointer"
+          >
+            <FaMagic size={12} />
+            <span>Ask AI</span>
+          </button>
+
+          {showMenu && canEditPost(post) && (
             <button
               onClick={(e) => {
                 e.stopPropagation();
@@ -48,7 +62,7 @@ const PostMenu = ({ post }) => {
             </button>
           )}
 
-          {canDeletePost(post) && (
+          {showMenu && canDeletePost(post) && (
             <button
               onClick={(e) => {
                 e.stopPropagation();
