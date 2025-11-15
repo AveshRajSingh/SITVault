@@ -8,7 +8,7 @@ const Navigation = () => {
 
   return (
     <div className="hidden md:flex gap-4 justify-center text-lg">
-      <NavLink
+      {/*<NavLink
         to="/home"
         className={({ isActive }) =>
           `${
@@ -17,7 +17,8 @@ const Navigation = () => {
         }
       >
         Home
-      </NavLink>
+      </NavLink>*/}
+
       <NavLink
         to="/Resources"
         className={({ isActive }) =>
@@ -28,17 +29,17 @@ const Navigation = () => {
       >
         Resources
       </NavLink>
-      
-      <NavLink
+
+      {/* <NavLink
         to="/contact-admin"
         className={({ isActive }) =>
           `${
             isActive ? "text-orange-400" : "text-gray-600"
           } hover:text-orange-400 transition-colors duration-300 ease-in-out`
         }
-      >
+      > 
         Contact
-      </NavLink>
+      </NavLink>*/}
     </div>
   );
 };
