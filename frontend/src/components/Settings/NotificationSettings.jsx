@@ -189,19 +189,16 @@ const NotificationSettings = () => {
                   Browser Permission
                 </h5>
                 <p className="text-sm text-gray-600">
-                  {permission === 'granted' && 'Permission granted'}
-                  {permission === 'denied' && 'Permission denied'}
-                  {permission === 'default' && 'Permission not requested yet'}
+                  {isSubscribed && 'Permission granted'}
+                  {!isSubscribed && 'Permission denied'}
                 </p>
               </div>
               <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                permission === 'granted' 
+                isSubscribed
                   ? 'bg-green-100 text-green-800' 
-                  : permission === 'denied'
-                  ? 'bg-red-100 text-red-800'
-                  : 'bg-gray-100 text-gray-800'
+                  : 'bg-red-100 text-red-800'
               }`}>
-                {permission}
+                {isSubscribed ? 'Granted' : 'Denied'}
               </span>
             </div>
           </div>
