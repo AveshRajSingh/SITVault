@@ -30,6 +30,17 @@ const Navigation = () => {
         Resources
       </NavLink>
 
+      <NavLink
+        to="/syllabus"
+        className={({ isActive }) =>
+          `${
+            isActive ? "text-orange-400" : "text-gray-600"
+          } hover:text-orange-400 transition-colors duration-300 ease-in-out`
+        }
+      >
+        Syllabus
+      </NavLink>
+
       {/* <NavLink
         to="/contact-admin"
         className={({ isActive }) =>
