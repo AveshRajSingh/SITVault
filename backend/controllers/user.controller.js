@@ -212,7 +212,7 @@ const verifyOtp = async (req, res) => {
       <p>Your email has been <strong>successfully verified</strong>.</p>
       <p>It has been forwarded to the admin for final account verification.</p>
       <p>You will receive another confirmation once your account is fully verified.</p>
-      <p style="margin-top: 30px;">Thank you,<br>SITCoders Team</p>
+      <p style="margin-top: 30px;">Thank you,<br>SITVault Team</p>
     </div>
   `
     );
@@ -821,14 +821,14 @@ const sendOtpForResetPassword = async (req, res) => {
         <html>
         <body style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; color: #333;">
           <div style="max-width: 500px; margin: auto; background: #fff; padding: 20px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
-            <h2 style="color: #007bff;">SITCoders Verification Code</h2>
+            <h2 style="color: #007bff;">SITVault Verification Code</h2>
             <p>Hi ${existedUser.name || "User"},</p>
             <p>Your One-Time Password (OTP) is:</p>
             <div style="font-size: 24px; font-weight: bold; letter-spacing: 2px; margin: 20px 0; color: #2c3e50;">
               ${otp}
             </div>
             <p>This OTP is valid for the next 10 minutes. Do not share it with anyone.</p>
-            <p>Thanks,<br/>Team SITCoders</p>
+            <p>Thanks,<br/>Team SITVault</p>
           </div>
         </body>
         </html>
@@ -987,7 +987,7 @@ const deleteAccount = async (req, res) => {
     </p>
     <p style="margin-top: 25px; font-size: 14px; color: #777;">
       Best wishes,<br>
-      <strong>SITCoders Team</strong>
+      <strong>SITVault Team</strong>
     </p>
   </div>
   `

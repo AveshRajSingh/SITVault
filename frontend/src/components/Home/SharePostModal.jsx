@@ -19,7 +19,7 @@ const SharePostModal = ({ isOpen, onClose, post }) => {
   const postUrl = `${window.location.origin}/post/${post?._id}`;
   
   // Generate share content
-  const shareTitle = `Check out this post by ${post?.author?.fullName || 'Unknown'} on SITCoders!`;
+  const shareTitle = `Check out this post by ${post?.author?.fullName || 'Unknown'} on SITVault!`;
   const shareDescription = post?.content?.substring(0, 150) + (post?.content?.length > 150 ? '...' : '');
 
   // Handle modal animation

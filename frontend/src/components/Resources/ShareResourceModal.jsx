@@ -18,7 +18,7 @@ const ShareResourceModal = ({ isOpen, onClose, resource }) => {
   const resourceUrl = resource?.link;
   
   // Generate share content
-  const shareTitle = `Check out this resource: ${resource?.title} from SITCoders!`;
+  const shareTitle = `Check out this resource: ${resource?.title} from SITVault!`;
 
   // Handle modal animation
   useEffect(() => {

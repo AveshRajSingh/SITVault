@@ -153,7 +153,7 @@ const verifyUserFromAdmin = async (req, res) => {
       <p>Your account has been <strong>successfully verified</strong> by the admin.</p>
       <p>You can now log in and start using all the features of your account.</p>
       <a href="http://yourfrontenddomain.com/login" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: #fff; text-decoration: none; border-radius: 5px;">Log In Now</a>
-      <p style="margin-top: 30px;">Thank you,<br>SIT coders</p>
+      <p style="margin-top: 30px;">Thank you,<br>SIT Vault</p>
     </div>
   `
     );
@@ -190,7 +190,7 @@ const rejectUserFromAdmin = async (req, res) => {
       <p>Dear ${user.fullName || "User"},</p>
       <p>Your account has been <strong>rejected</strong> by the admin.</p>
       <p>If you believe this is a mistake, please contact support.</p>
-      <p style="margin-top: 30px;">Thank you,<br>SIT coders</p>
+      <p style="margin-top: 30px;">Thank you,<br>SIT Vault</p>
     </div>
   `
     );
@@ -299,7 +299,7 @@ const suspendAccount = async (req, res) => {
           <p>Reason: ${suspensionReason || "No reason provided."}</p>
           <p>Duration: ${duration ? `${duration} ${durationIn}` : "Forever"}</p>
           <p>If you believe this is a mistake, please contact support.</p>
-          <p style="margin-top: 30px;">Thank you,<br>SIT coders</p>
+          <p style="margin-top: 30px;">Thank you,<br>SIT Vault</p>
         </div>
       `
     );
@@ -351,7 +351,7 @@ const removeSuspension = async (req, res) => {
           <h2 style="color: #4CAF50;">Account Suspension Removed</h2>
           <p>Dear ${user.fullName || "User"},</p>
           <p>Your account suspension has been <strong>removed</strong> by ${adminUser.fullName || "an Admin"}.</p>
-          <p style="margin-top: 30px;">Thank you,<br>SIT coders</p>
+          <p style="margin-top: 30px;">Thank you,<br>SIT Vault</p>
         </div>
       `
     );

@@ -17,7 +17,7 @@ function HeroText() {
           select-none text-center text-4xl sm:text-5xl md:text-6xl lg:text-8xl'
         >
           <span className='text-gray-600'>SIT</span>
-          <span className='text-orange-400'>Coders</span>
+          <span className='text-orange-400'>Vault</span>
         </h1>
         <p 
           className='text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600'
@@ -39,16 +39,16 @@ function HeroText() {
             >
               <p className='font-Jost text-start text-gray-600 text-sm sm:text-base md:text-md lg:text-lg'>
                 Dear Students, <br /> 
-                With warm regards, we at SITCoders are thrilled to welcome you to our community. <br />
-                Here, at SITCoders we are determined to provide you with the best possible colalborative 
+                With warm regards, we at SITVault are thrilled to welcome you to our community. <br />
+                Here, at SITVault we are determined to provide you with the best possible colalborative 
                 platform Where you can share your <span className='text-orange-400'>Queries</span>, <span className='text-orange-400'>Projects</span>, and 
                 <span className='text-orange-400'> Ideas</span> to other students and faculty members. <br />
                 We are committed to fostering a culture of innovation and collaboration, 
-                and we believe that SITCoders will play a vital role in achieving this goal. <br />
+                and we believe that SITVault will play a vital role in achieving this goal. <br />
                 We look forward to working with you and supporting you in your academic journey. <br />
                 <br />
                 Best regards, <br />
-                Team SITCoders
+                Team SITVault
               </p>
             </motion.div>
           )}

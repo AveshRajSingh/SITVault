@@ -62,7 +62,7 @@ const sendEmailToAdmin = async (req, res) => {
         </div>
         <hr style="margin: 24px 0; border: none; border-top: 1px solid #e5e7eb;">
         <p style="margin-top: 0; color: #666; font-size: 14px;">
-        This message was sent through the <span style="color: #22c55e; font-weight: bold;">SIT Coders</span> contact form.
+        This message was sent through the <span style="color: #22c55e; font-weight: bold;">SIT Vault</span> contact form.
         </p>
         </div>
       `
@@ -90,7 +90,7 @@ const sendEmailToAdmin = async (req, res) => {
         <hr style="margin: 24px 0; border: none; border-top: 1px solid #e0e0e0;">
         <p style="margin-top: 0; color: #666; font-size: 14px;">
         Thank you,<br>
-        <span style="color: #2563eb; font-weight: bold;">SIT Coders Team</span>
+        <span style="color: #2563eb; font-weight: bold;">SIT Vault Team</span>
         </p>
       </div>
       `

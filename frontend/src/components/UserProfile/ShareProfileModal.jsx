@@ -18,8 +18,8 @@ const ShareProfileModal = ({ isOpen, onClose, user, isOwnProfile }) => {
   const profileUrl = `${window.location.origin}/profile/${user?.username}`;
   
   // Generate share content
-  const shareTitle = `Check out ${isOwnProfile ? 'my' : `${user?.fullName}'s`} profile on SITCoders!`;
-  const shareDescription = user?.bio || `${user?.fullName} is part of the SITCoders community.`;
+  const shareTitle = `Check out ${isOwnProfile ? 'my' : `${user?.fullName}'s`} profile on SITVault!`;
+  const shareDescription = user?.bio || `${user?.fullName} is part of the SITVault community.`;
 
   // Handle modal animation
   useEffect(() => {

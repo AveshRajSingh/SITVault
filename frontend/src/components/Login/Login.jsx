@@ -69,7 +69,7 @@ function Login() {
             SIT
           </span>
           <span className="text-3xl md:text-4xl text-orange-400 font-Saira font-bold">
-            Coders
+            Vault
           </span>
         </div>
         
