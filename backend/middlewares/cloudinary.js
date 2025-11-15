@@ -54,6 +54,40 @@ const uploadPostImageOnCloudinary = async (filePath) => {
   }
 };
 
+const uploadPDFOnCloudinary = async (filePath) => {
+  try {
+    if (!filePath) {
+      throw new Error("No filepath provided for upload");
+    }
+
+    const result = await cloudinary.uploader.upload(filePath, {
+      folder: 'sitverse/resources',
+      resource_type: 'raw', // For non-image files like PDFs
+      type: 'upload', // Explicit upload type
+      access_mode: 'public', // Ensure public access
+    });
+
+    // Generate a signed URL that bypasses Cloudinary restrictions
+    const signedUrl = cloudinary.url(result.public_id, {
+      resource_type: 'raw',
+      type: 'upload',
+      sign_url: true,
+      secure: true,
+    });
+
+    return {
+      url: signedUrl, // Use signed URL instead of regular URL
+      secure_url: result.secure_url,
+      public_id: result.public_id,
+      signed_url: signedUrl,
+    };
+
+  } catch (error) {
+    console.error("Cloudinary PDF Upload Error:", error);
+    throw new Error(error?.message || "Failed to upload PDF to Cloudinary");
+  }
+};
+
 const deleteFromCloudinary = async (public_id) => {
   try {
     if (!public_id) {
@@ -72,4 +106,4 @@ const deleteFromCloudinary = async (public_id) => {
   }
 };
 
-export { uploadOnCloudinary, deleteFromCloudinary , uploadPostImageOnCloudinary };
+export { uploadOnCloudinary, deleteFromCloudinary , uploadPostImageOnCloudinary, uploadPDFOnCloudinary };

@@ -2,6 +2,8 @@ import Resource from "../models/resource.model.js";
 import User from "../models/user.model.js";
 import Admin from "../models/admin.model.js";
 import Notification from "../models/notification.model.js";
+import { uploadPDFOnCloudinary } from "../middlewares/cloudinary.js";
+import fs from "fs";
 
 // Controller for creating a new resource
 const createResource = async (req, res) => {
@@ -9,13 +11,56 @@ const createResource = async (req, res) => {
     const { title, description, link, category, tags, thumbnail } = req.body;
     const authorId = req.user._id;
 
-    if (!title || !description || !link || !category) {
-      return res.status(400).json({ message: "Title, description, link, and category are required." });
+    console.log('Create Resource Request:');
+    console.log('Body:', req.body);
+    console.log('File:', req.file);
+    console.log('Category:', category);
+
+    if (!title || !description || !category) {
+      return res.status(400).json({ message: "Title, description, and category are required." });
     }
 
     const user = await User.findById(authorId);
     if (!user) {
       return res.status(404).json({ message: "Author not found." });
+    }
+
+    // Handle PDF upload for Notes & PYQs and Syllabus categories
+    let resourceLink = link;
+    if ((category === "Notes & PYQs" || category === "Syllabus") && req.file) {
+      console.log('Processing PDF upload...');
+      try {
+        const pdfResult = await uploadPDFOnCloudinary(req.file.path);
+        resourceLink = pdfResult.url;
+        console.log('PDF uploaded successfully:', resourceLink);
+        
+        // Clean up the uploaded file from temp directory
+        try {
+          fs.unlinkSync(req.file.path);
+        } catch (unlinkError) {
+          console.error('Error deleting temp file:', unlinkError);
+        }
+      } catch (uploadError) {
+        console.error('PDF upload error:', uploadError);
+        // Clean up the file if upload fails
+        if (req.file && req.file.path) {
+          try {
+            fs.unlinkSync(req.file.path);
+          } catch (unlinkError) {
+            console.error('Error deleting temp file after failed upload:', unlinkError);
+          }
+        }
+        return res.status(500).json({ message: "Failed to upload PDF file." });
+      }
+    }
+
+    if (!resourceLink && (category === "Notes & PYQs" || category === "Syllabus")) {
+      console.log('No PDF file or link provided for PDF category');
+      return res.status(400).json({ message: "PDF file is required for Notes & PYQs and Syllabus categories." });
+    }
+
+    if (!resourceLink) {
+      return res.status(400).json({ message: "Resource link or PDF file is required." });
     }
 
     // CORRECTION: Check if the user is an admin directly in the controller
@@ -25,7 +70,7 @@ const createResource = async (req, res) => {
     const newResource = new Resource({
       title,
       description,
-      link,
+      link: resourceLink,
       category,
       tags: typeof tags === 'string'
           ? tags.split(',').map(tag => tag.trim()).filter(t => t !== '')
@@ -115,6 +160,7 @@ const getAllResources = async (req, res) => {
 // Controller to update a resource (admin or author)
 const updateResource = async (req, res) => {
   try {
+    console.error(req)
     const { resourceId } = req.params;
     const userId = req.user._id;
     const { title, description, link, category, tags, thumbnail } = req.body;
@@ -137,12 +183,24 @@ const updateResource = async (req, res) => {
     // Update fields
     resource.title = title || resource.title;
     resource.description = description || resource.description;
-    resource.link = link || resource.link;
     resource.category = category || resource.category;
-    resource.tags = typeof tags === 'string'
-          ? tags.split(',').map(tag => tag.trim()).filter(t => t !== '')
-          : tags || [],
-    resource.thumbnail = thumbnail || resource.thumbnail;
+    
+    // Handle tags
+    if (tags !== undefined) {
+      resource.tags = typeof tags === 'string'
+        ? tags.split(',').map(tag => tag.trim()).filter(t => t !== '')
+        : tags || [];
+    }
+    
+    // Only update link if it's provided (for non-PDF categories or if user provides new link)
+    if (link) {
+      resource.link = link;
+    }
+    
+    // Update thumbnail if provided
+    if (thumbnail !== undefined) {
+      resource.thumbnail = thumbnail;
+    }
 
     await resource.save();
 

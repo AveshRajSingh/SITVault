@@ -52,6 +52,16 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
+// File filter for PDF validation
+const pdfFileFilter = (req, file, cb) => {
+  // Accept only PDF files
+  if (file.mimetype === 'application/pdf') {
+    cb(null, true);
+  } else {
+    cb(new Error('Only PDF files are allowed'), false);
+  }
+};
+
 const upload = multer({ 
   storage,
   fileFilter,
@@ -60,4 +70,13 @@ const upload = multer({
   }
 });
 
+const uploadPDF = multer({ 
+  storage,
+  fileFilter: pdfFileFilter,
+  limits: {
+    fileSize: 5 * 1024 * 1024, // 5MB limit
+  }
+});
+
 export default upload;
+export { uploadPDF };

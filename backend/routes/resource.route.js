@@ -1,6 +1,7 @@
 import { Router } from "express";
 import isVarifiedByAdmin from "../middlewares/isVarifiedByAdmin.js";
 import verifyAdmin from "../middlewares/verifyAdmin.js";
+import { uploadPDF } from "../middlewares/multer.middleware.js";
 import {
   createResource,
   getAllResources,
@@ -20,7 +21,7 @@ router.get("/get-all", getAllResources);
 router.get("/user/:userId", getResourcesByUserId);
 
 // Protected routes for authenticated users
-router.post("/create", isVarifiedByAdmin, createResource);
+router.post("/create", isVarifiedByAdmin, uploadPDF.single('pdf'), createResource);
 router.post("/upvote/:resourceId", isVarifiedByAdmin, upvoteResource);
 
 // Protected routes for authors and admins

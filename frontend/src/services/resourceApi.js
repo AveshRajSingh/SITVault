@@ -31,7 +31,14 @@ export const getResourcesByUserId = async (userId, page = 1, limit = 10, search)
 // Function to submit a new resource (for regular and admin users)
 export const createResource = async (resourceData) => {
   try {
-    const response = await api.post('/api/resources/create', resourceData);
+    const config = {};
+    // If resourceData is FormData, set appropriate headers
+    if (resourceData instanceof FormData) {
+      config.headers = {
+        'Content-Type': 'multipart/form-data',
+      };
+    }
+    const response = await api.post('/api/resources/create', resourceData, config);
     return response.data;
   } catch (error) {
     throw error.response?.data?.message || 'Failed to create resource';
@@ -78,7 +85,14 @@ export const rejectResource = async (resourceId) => {
 
 export const updateResource = async (resourceId, resourceData) => {
   try {
-    const response = await api.put(`/api/resources/edit/${resourceId}`, resourceData);
+    const config = {};
+    // If resourceData is FormData, set appropriate headers
+    if (resourceData instanceof FormData) {
+      config.headers = {
+        'Content-Type': 'multipart/form-data',
+      };
+    }
+    const response = await api.put(`/api/resources/edit/${resourceId}`, resourceData, config);
     return response.data;
   } catch (error) {
     throw error.response?.data?.message || 'Failed to update resource';
