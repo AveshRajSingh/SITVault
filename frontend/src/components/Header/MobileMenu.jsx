@@ -77,7 +77,7 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
                   SIT
                 </span>
                 <span className="text-xl text-orange-400 font-Saira font-bold">
-                  Coders
+                  Vault
                 </span>
               </div>
               <button

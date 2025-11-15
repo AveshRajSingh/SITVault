@@ -10,7 +10,7 @@ function Footer() {
               SIT
             </span>
             <span className="text-3xl md:text-4xl text-orange-400 font-Saira font-bold">
-              Coders
+              Vault
             </span>
           </Link>
           <div>
@@ -39,7 +39,7 @@ function Footer() {
         </div>
         <div className="flex flex-col sm:flex-row items-center justify-between px-4 md:px-12 container text-center sm:text-left gap-2 sm:gap-0">
           <p className="text-sm">
-            &copy; {new Date().getFullYear()} SITCoders. All rights reserved.
+            &copy; {new Date().getFullYear()} SITVault. All rights reserved.
           </p>
           <p className="text-sm">
             Made with{" "}
@@ -54,7 +54,7 @@ function Footer() {
             >
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
             </svg>{" "}
-            by Team SITCoders
+            by Team SITVault
           </p>
         </div>
       </footer>

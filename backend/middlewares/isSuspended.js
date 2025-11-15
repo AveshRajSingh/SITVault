@@ -24,7 +24,7 @@ const isSuspended = async (req, res, next) => {
           <p>Dear ${user.fullName || "User"},</p>
           <p>Your account suspension has been <strong>Over</strong>.</p>
           <p>Now you can access your account.</p>
-          <p style="margin-top: 30px;">Thank you,<br>SIT coders</p>
+          <p style="margin-top: 30px;">Thank you,<br>SIT Vault</p>
         </div>
       `
         );

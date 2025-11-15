@@ -1,4 +1,4 @@
-# 📘 SitCoders – College Community Forum
+# 📘 SitVault – College Community Forum
 
 [![MERN Stack](https://img.shields.io/badge/Stack-MERN-brightgreen?style=flat-square\&logo=mongodb\&logoColor=white)]()
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)]()
@@ -25,7 +25,7 @@
 
 ## 💂 Overview
 
-SitCoders is a web-based forum designed for students to post, discuss, and collaborate. It includes authentication, role-based access, post & comment systems, and a powerful admin dashboard — all in a modern, responsive interface.
+SitVault is a web-based forum designed for students to post, discuss, and collaborate. It includes authentication, role-based access, post & comment systems, and a powerful admin dashboard — all in a modern, responsive interface.
 
 ---
 
@@ -121,7 +121,7 @@ PUT    /api/admin/verify-user/:id    # Verify user
 ## 📁 Project Structure
 
 ```
-SITCoders/
+SITVault/
 ├── backend/       # API controllers, models, routes, middleware
 ├── frontend/      # React application
 └── uploads/       # Temporary file storage
@@ -143,7 +143,7 @@ SITCoders/
 ```bash
 # Clone repo
 git clone <repository-url>
-cd SITCoders
+cd SITVault
 
 # Backend setup
 cd backend
@@ -185,6 +185,6 @@ Built with ❤️ by:
 * **Navneet Raj** – Lead Developer
 * **Avesh Raj Singh** – Lead Developer
 
-> *"Code together. Learn together." – SitCoders Team*
+> *"Code together. Learn together." – SitVault Team*
 
 ---
