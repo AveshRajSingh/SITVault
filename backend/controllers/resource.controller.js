@@ -1,6 +1,7 @@
 import Resource from "../models/resource.model.js";
 import User from "../models/user.model.js";
 import Admin from "../models/admin.model.js";
+import Notification from "../models/notification.model.js";
 
 // Controller for creating a new resource
 const createResource = async (req, res) => {
