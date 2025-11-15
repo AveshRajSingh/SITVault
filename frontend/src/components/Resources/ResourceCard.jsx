@@ -17,6 +17,7 @@ import { useResources } from "../../context/ResourcesContext"; // New import
 import ResourceDeleteModal from "./ResourceDeleteModal";
 import ThumbnailViewModal from "./ThumbnailViewModal";
 import ShareResourceButton from "./ShareResourceButton";
+import { deleteResource } from "../../services/resourceApi";
 
 const ResourceCard = ({ resource, onEdit, onDelete, onShare }) => {
   const { user, isAdmin, isAuthenticated } = useAuth();

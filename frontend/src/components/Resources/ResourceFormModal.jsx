@@ -16,7 +16,7 @@ const ResourceFormModal = ({ isOpen, onClose, onResourceCreated, initialData }) 
   });
 
   const isEditMode = !!initialData;
-  const categories = ["Career Guides", "Roadmaps", "Playlists", "Notes & PYQs"];
+  const categories = ["Career Guides", "Roadmaps", "Playlists", "Notes & PYQs", "Syllabus"];
 
   useEffect(() => {
     if (isOpen) {
