@@ -575,7 +575,7 @@ function Syllabus() {
                   <button
                     key={branch.id}
                     onClick={() => handleBranchSelect(branch.id)}
-                    className="p-6 bg-gradient-to-br from-purple-400 to-purple-500 text-white rounded-lg hover:from-purple-500 hover:to-purple-600 transition-all transform hover:scale-105 shadow-lg"
+                    className="p-6 bg-gradient-to-br from-orange-400 to-orange-500 text-white rounded-lg hover:from-orange-500 hover:to-orange-600 transition-all transform hover:scale-105 shadow-lg"
                   >
                     <div className="text-xl font-bold mb-2">{branch.code}</div>
                     <div className="text-sm opacity-90">{branch.name}</div>
