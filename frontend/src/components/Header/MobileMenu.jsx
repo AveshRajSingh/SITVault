@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import { FiX, FiUser, FiSettings, FiLogOut} from "react-icons/fi";
+import { FiX, FiUser, FiSettings, FiLogOut, FiBell} from "react-icons/fi";
 import { MdOutlineLeaderboard } from "react-icons/md";
 import { FaRegUserCircle } from "react-icons/fa";
 import { useEffect } from "react";
@@ -174,6 +174,21 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
 
                     {/* Divider */}
                     <div className="border-t border-gray-200 my-2" />
+
+                    <NavLink
+                      to="/notifications"
+                      className={({ isActive }) =>
+                        `flex items-center gap-3 px-4 py-3 text-lg ${
+                          isActive
+                            ? "text-orange-400 bg-orange-50 border-r-2 border-orange-400"
+                            : "text-gray-700 hover:text-orange-400 hover:bg-gray-50"
+                        } transition-all duration-200`
+                      }
+                      onClick={closeMenu}
+                    >
+                      <FiBell size={20} />
+                      Notifications
+                    </NavLink>
 
                     <NavLink
                       to="/leaderboard"
