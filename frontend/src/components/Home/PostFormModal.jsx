@@ -7,10 +7,15 @@ import {
   FaItalic,
   FaSmile,
   FaCode,
+  FaMagic,
+  FaLightbulb,
+  FaCheckCircle,
+  FaExclamationTriangle,
 } from "react-icons/fa";
 import { toast } from "react-toastify";
 import EmojiPicker from "emoji-picker-react";
 import { renderSafeMarkdown } from "../../utils/sanitize";
+import { analyzePostContent } from "../../utils/geminiHelper";
 // No longer need useNavigate
 import { lockBodyScroll, unlockBodyScroll } from "../../utils/scrollLock";
 
@@ -24,6 +29,9 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
   const [showCodeBox, setShowCodeBox] = useState(false);
   const [codeLanguage, setCodeLanguage] = useState("javascript");
   const [codeText, setCodeText] = useState("");
+  const [aiAnalysis, setAiAnalysis] = useState(null);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [showAiPanel, setShowAiPanel] = useState(false);
 
   const textareaRef = useRef(null);
   // No longer need navigate
@@ -60,6 +68,8 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
         setTag("general");
         setImage(null);
         setImagePreview(null);
+        setAiAnalysis(null);
+        setShowAiPanel(false);
       }
     } else {
       unlockBodyScroll();
@@ -155,6 +165,48 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
     }, 0);
   };
 
+  const handleAiAnalyze = async () => {
+    if (!content.trim()) {
+      toast.warning("Please write some content first");
+      return;
+    }
+
+    if (content.trim().length < 10) {
+      toast.warning("Please write at least 10 characters for meaningful analysis");
+      return;
+    }
+
+    setIsAnalyzing(true);
+    setShowAiPanel(true);
+    
+    const result = await analyzePostContent(content, tag);
+    
+    if (result.success) {
+      setAiAnalysis(result.data);
+      
+      // Show warnings if any
+      if (result.data.warningFlags && result.data.warningFlags.length > 0) {
+        toast.warning("AI detected some concerns. Please review the suggestions.");
+      } else if (result.data.score >= 8) {
+        toast.success("Great content! 🎉");
+      }
+    } else {
+      toast.error("Failed to analyze content. Please try again.");
+      setShowAiPanel(false);
+    }
+    
+    setIsAnalyzing(false);
+  };
+
+  const applyAiSuggestion = () => {
+    if (aiAnalysis && aiAnalysis.enhancedVersion) {
+      setContent(aiAnalysis.enhancedVersion);
+      toast.success("AI-improved version applied!");
+      setShowAiPanel(false);
+      setAiAnalysis(null);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!content.trim()) {
@@ -178,7 +230,7 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
       onClose();
     }
     setIsSubmitting(false);
-    // Removed the navigate("/") call as it's redundant and causes the error
+    // Removed the navigate("/") call as it's orangeundant and causes the error
   };
 
   if (!isOpen) return null;
@@ -212,7 +264,21 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
               <div className="relative">
                 <button type="button" onClick={() => setShowEmojiPicker(!showEmojiPicker)} className="p-2 hover:bg-gray-200 rounded transition-colors" title="Insert Emoji"><FaSmile className="text-gray-600" size={14} /></button>
               </div>
-              <div className="ml-auto text-xs text-gray-500">Use **bold**, *italic*, or `Code Snippets`</div>
+              <div className="h-6 w-px bg-gray-300 mx-1"></div>
+              <button 
+                type="button" 
+                onClick={handleAiAnalyze}
+                disabled={isAnalyzing || !content.trim()}
+                className="flex items-center gap-1 px-3 py-2 bg-gradient-to-r from-orange-500 to-orange-500 text-white rounded-lg hover:from-orange-600 hover:to-orange-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-xs font-medium"
+                title="Get AI suggestions"
+              >
+                {isAnalyzing ? (
+                  <><FaSpinner className="animate-spin" size={12} /><span>Analyzing...</span></>
+                ) : (
+                  <><FaMagic size={12} /><span>AI Improve</span></>
+                )}
+              </button>
+              <div className="ml-auto text-xs text-gray-500 hidden md:block">Use **bold**, *italic*, or `Code Snippets`</div>
             </div>
 
             {/* Code Box */}
@@ -234,8 +300,104 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
 
             {/* Content Textarea */}
             <div className="mb-4">
-              <textarea ref={textareaRef} value={content} onChange={(e) => setContent(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-orange-400 focus:border-orange-500 resize-none outline-none font-mono text-sm" rows="8" placeholder="Share your thoughts..." required />
+              <textarea ref={textareaRef} value={content} onChange={(e) => setContent(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-orange-400 focus:border-orange-500 resize-none outline-none font-mono text-sm" rows="8" placeholder="Share your thoughts..." requiorange />
             </div>
+
+            {/* AI Analysis Panel */}
+            {showAiPanel && aiAnalysis && (
+              <div className="mb-4 p-4 bg-gradient-to-br from-orange-50 to-orange-50 border-2 border-orange-200 rounded-lg">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <FaMagic className="text-orange-600" size={16} />
+                    <h4 className="font-semibold text-orange-900">AI Analysis</h4>
+                  </div>
+                  <button 
+                    type="button"
+                    onClick={() => setShowAiPanel(false)}
+                    className="text-gray-500 hover:text-gray-700"
+                  >
+                    <FaTimes size={14} />
+                  </button>
+                </div>
+
+                {/* Score and Status */}
+                <div className="flex items-center gap-4 mb-3 pb-3 border-b border-orange-200">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm text-gray-700">Quality Score:</span>
+                    <span className={`font-bold text-lg ${
+                      aiAnalysis.score >= 8 ? 'text-green-600' : 
+                      aiAnalysis.score >= 6 ? 'text-yellow-600' : 'text-orange-600'
+                    }`}>
+                      {aiAnalysis.score}/10
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {aiAnalysis.isAppropriate ? (
+                      <><FaCheckCircle className="text-green-600" size={14} /><span className="text-sm text-green-700">Appropriate</span></>
+                    ) : (
+                      <><FaExclamationTriangle className="text-orange-600" size={14} /><span className="text-sm text-orange-700">Needs Review</span></>
+                    )}
+                  </div>
+                  <div className="ml-auto">
+                    <span className="text-xs px-2 py-1 bg-orange-200 text-orange-800 rounded-full">
+                      {aiAnalysis.tone}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Warnings */}
+                {aiAnalysis.warningFlags && aiAnalysis.warningFlags.length > 0 && (
+                  <div className="mb-3 p-3 bg-orange-50 border border-orange-200 rounded-lg">
+                    <div className="flex items-start gap-2">
+                      <FaExclamationTriangle className="text-orange-600 mt-0.5" size={14} />
+                      <div className="flex-1">
+                        <p className="text-sm font-semibold text-orange-800 mb-1">Concerns:</p>
+                        <ul className="text-xs text-orange-700 space-y-1">
+                          {aiAnalysis.warningFlags.map((warning, idx) => (
+                            <li key={idx}>• {warning}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Improvements */}
+                {aiAnalysis.improvements && aiAnalysis.improvements.length > 0 && (
+                  <div className="mb-3">
+                    <div className="flex items-center gap-2 mb-2">
+                      <FaLightbulb className="text-yellow-600" size={14} />
+                      <p className="text-sm font-semibold text-gray-800">Suggestions:</p>
+                    </div>
+                    <ul className="text-sm text-gray-700 space-y-2 pl-6">
+                      {aiAnalysis.improvements.map((improvement, idx) => (
+                        <li key={idx} className="list-disc">{improvement}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Apply Enhanced Version */}
+                {aiAnalysis.enhancedVersion && aiAnalysis.enhancedVersion !== content && (
+                  <div className="mt-3 pt-3 border-t border-orange-200">
+                    <div className="flex items-center justify-between mb-2">
+                      <p className="text-sm font-semibold text-gray-800">Enhanced Version:</p>
+                      <button
+                        type="button"
+                        onClick={applyAiSuggestion}
+                        className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-orange-500 to-orange-500 text-white text-xs rounded-lg hover:from-orange-600 hover:to-orange-600 transition-all"
+                      >
+                        <FaCheckCircle size={12} />
+                        Apply
+                      </button>
+                    </div>
+                    <div className="p-3 bg-white rounded-lg border border-orange-200 max-h-32 overflow-y-auto">
+                      <p className="text-sm text-gray-700 whitespace-pre-wrap">{aiAnalysis.enhancedVersion}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Preview */}
             {content && (
@@ -258,7 +420,7 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
                       <span className="text-sm text-gray-600">{isEditMode ? 'Change Image' : 'Choose Image'}</span>
                       <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
                     </label>
-                    {imagePreview && (<button type="button" onClick={removeImage} className="text-red-500 hover:text-red-700 transition-colors"><FaTimes /></button>)}
+                    {imagePreview && (<button type="button" onClick={removeImage} className="text-orange-500 hover:text-orange-700 transition-colors"><FaTimes /></button>)}
                   </div>
                 </div>
                 <div className="mb-4">
@@ -281,7 +443,7 @@ const PostFormModal = ({ isOpen, onClose, onSubmit, post, isAdmin }) => {
       {showEmojiPicker && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[70] p-4">
           <div className="relative bg-white rounded-lg shadow-xl">
-            <button onClick={() => setShowEmojiPicker(false)} className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors z-10"><FaTimes size={12} /></button>
+            <button onClick={() => setShowEmojiPicker(false)} className="absolute -top-2 -right-2 bg-orange-500 text-white rounded-full p-1 hover:bg-orange-600 transition-colors z-10"><FaTimes size={12} /></button>
             <EmojiPicker onEmojiClick={handleEmojiClick} width={Math.min(350, window.innerWidth - 32)} height={Math.min(450, window.innerHeight - 100)} searchDisabled={false} skinTonesDisabled={false} previewConfig={{ showPreview: false }} />
           </div>
         </div>
