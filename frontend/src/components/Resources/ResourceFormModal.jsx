@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { FaTimes, FaSpinner, FaPlus } from 'react-icons/fa';
+import { FaTimes, FaSpinner, FaPlus, FaFilePdf, FaUpload } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { createResource, updateResource } from '../../services/resourceApi';
 import { lockBodyScroll, unlockBodyScroll } from '../../utils/scrollLock';
 
 const ResourceFormModal = ({ isOpen, onClose, onResourceCreated, initialData }) => {
   const [loading, setLoading] = useState(false);
+  const [pdfFile, setPdfFile] = useState(null);
+  const [pdfFileName, setPdfFileName] = useState('');
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -16,7 +18,8 @@ const ResourceFormModal = ({ isOpen, onClose, onResourceCreated, initialData }) 
   });
 
   const isEditMode = !!initialData;
-  const categories = ["Career Guides", "Roadmaps", "Playlists", "Notes & PYQs"];
+  const categories = ["Career Guides", "Roadmaps", "Playlists", "Notes & PYQs", "Syllabus"];
+  const isPDFCategory = formData.category === 'Notes & PYQs' || formData.category === 'Syllabus';
 
   useEffect(() => {
     if (isOpen) {
@@ -39,6 +42,8 @@ const ResourceFormModal = ({ isOpen, onClose, onResourceCreated, initialData }) 
           tags: '',
           thumbnail: '',
         });
+        setPdfFile(null);
+        setPdfFileName('');
       }
     } else {
       unlockBodyScroll();
@@ -49,6 +54,32 @@ const ResourceFormModal = ({ isOpen, onClose, onResourceCreated, initialData }) 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Clear PDF when category changes to non-PDF category
+    if (name === 'category' && value !== 'Notes & PYQs' && value !== 'Syllabus') {
+      setPdfFile(null);
+      setPdfFileName('');
+    }
+  };
+
+  const handlePDFChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // Validate file type
+      if (file.type !== 'application/pdf') {
+        toast.error('Please select a PDF file');
+        return;
+      }
+      
+      // Validate file size (5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        toast.error('PDF file size must be less than 5MB');
+        return;
+      }
+      
+      setPdfFile(file);
+      setPdfFileName(file.name);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -56,16 +87,55 @@ const ResourceFormModal = ({ isOpen, onClose, onResourceCreated, initialData }) 
     setLoading(true);
 
     try {
-      const payload = {
-        ...formData,
-        tags: formData.tags.split(',').map(tag => tag.trim()).filter(tag => tag !== ''),
-      };
-      
       if (isEditMode) {
-        await updateResource(initialData._id, payload);
+        // For edit mode, send JSON data (no PDF upload allowed)
+        const updateData = {
+          title: formData.title,
+          description: formData.description,
+          category: formData.category,
+          tags: formData.tags,
+          thumbnail: formData.thumbnail,
+        };
+
+        // Only include link if it's not a PDF category or if it exists
+        if (!isPDFCategory && formData.link) {
+          updateData.link = formData.link;
+        }
+
+        await updateResource(initialData._id, updateData);
         toast.success('Resource updated successfully!');
       } else {
-        await createResource(payload);
+        // For create mode, validate and send FormData
+        // Validate PDF for PDF categories
+        if (isPDFCategory && !pdfFile) {
+          toast.error('Please upload a PDF file');
+          setLoading(false);
+          return;
+        }
+
+        // Validate link for non-PDF categories
+        if (!isPDFCategory && !formData.link) {
+          toast.error('Please provide a resource link');
+          setLoading(false);
+          return;
+        }
+
+        const formDataToSend = new FormData();
+        formDataToSend.append('title', formData.title);
+        formDataToSend.append('description', formData.description);
+        formDataToSend.append('category', formData.category);
+        formDataToSend.append('tags', formData.tags);
+        if (formData.thumbnail) {
+          formDataToSend.append('thumbnail', formData.thumbnail);
+        }
+        
+        if (isPDFCategory && pdfFile) {
+          formDataToSend.append('pdf', pdfFile);
+        } else if (!isPDFCategory && formData.link) {
+          formDataToSend.append('link', formData.link);
+        }
+
+        await createResource(formDataToSend);
         toast.success('Resource submitted for Approval!');
       }
       
@@ -119,17 +189,7 @@ const ResourceFormModal = ({ isOpen, onClose, onResourceCreated, initialData }) 
               required
             />
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Link (URL)</label>
-            <input
-              type="url"
-              name="link"
-              value={formData.link}
-              onChange={handleInputChange}
-              className="w-full p-2 border border-gray-300 rounded-lg"
-              required
-            />
-          </div>
+          
           <div>
             <label className="block text-sm font-medium text-gray-700">Category</label>
             <select
@@ -138,12 +198,86 @@ const ResourceFormModal = ({ isOpen, onClose, onResourceCreated, initialData }) 
               onChange={handleInputChange}
               className="w-full p-2 border border-gray-300 rounded-lg"
               required
+              disabled={isEditMode && isPDFCategory}
             >
               {categories.map(cat => (
                 <option key={cat} value={cat}>{cat}</option>
               ))}
             </select>
+            {isEditMode && isPDFCategory && (
+              <p className="text-xs text-gray-500 mt-1">Category cannot be changed for PDF resources</p>
+            )}
           </div>
+
+          {/* Conditional rendering: PDF upload for Notes & PYQs and Syllabus */}
+          {isPDFCategory ? (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Upload PDF (Max 5MB)
+              </label>
+              {isEditMode ? (
+                <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+                  <div className="flex items-center gap-2 mb-2">
+                    <FaFilePdf className="text-red-500" size={24} />
+                    <span className="text-sm text-gray-700">PDF already uploaded</span>
+                  </div>
+                  {initialData.link && (
+                    <a
+                      href={initialData.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-orange-600 hover:text-orange-700 flex items-center gap-1"
+                    >
+                      <FaFilePdf />
+                      View PDF
+                    </a>
+                  )}
+                  <p className="text-xs text-gray-500 mt-2">
+                    PDF cannot be changed after upload. Delete and create a new resource if needed.
+                  </p>
+                </div>
+              ) : (
+                <div className="relative">
+                  <input
+                    type="file"
+                    accept=".pdf"
+                    onChange={handlePDFChange}
+                    className="hidden"
+                    id="pdf-upload"
+                  />
+                  <label
+                    htmlFor="pdf-upload"
+                    className="flex items-center justify-center gap-2 w-full p-4 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-orange-500 hover:bg-orange-50 transition-colors"
+                  >
+                    {pdfFileName ? (
+                      <>
+                        <FaFilePdf className="text-red-500" size={24} />
+                        <span className="text-sm text-gray-700">{pdfFileName}</span>
+                      </>
+                    ) : (
+                      <>
+                        <FaUpload className="text-gray-400" size={20} />
+                        <span className="text-sm text-gray-600">Click to upload PDF</span>
+                      </>
+                    )}
+                  </label>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Link (URL)</label>
+              <input
+                type="url"
+                name="link"
+                value={formData.link}
+                onChange={handleInputChange}
+                className="w-full p-2 border border-gray-300 rounded-lg"
+                required={!isPDFCategory}
+              />
+            </div>
+          )}
+          
           <div>
             <label className="block text-sm font-medium text-gray-700">Tags (comma-separated)</label>
             <input
@@ -187,7 +321,6 @@ const ResourceFormModal = ({ isOpen, onClose, onResourceCreated, initialData }) 
                 </>
               ) : (
                 <>
-                  {/* <FaPlus /> */}
                   <span>{isEditMode ? 'Update Resource' : 'Submit Resource'}</span>
                 </>
               )}

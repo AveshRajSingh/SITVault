@@ -15,6 +15,7 @@ import {
   Landing,
   Home,
   Resources,
+  Syllabus,
   ContactAdmin,
   UserProfile,
   AdminDashboard,
@@ -41,6 +42,7 @@ const router = createBrowserRouter(
       <Route path="signup" element={<Signup />} />
       <Route path="verify-otp" element={<VerifyOTP />} />
       <Route path="Resources" element={<Resources />} />
+      <Route path="syllabus" element={<Syllabus />} />
       <Route path="contact-admin" element={<ContactAdmin />} />
       <Route path="post/:postId" element={<SinglePostView />} />
       <Route path="profile/:username?" element={<UserProfile />} />

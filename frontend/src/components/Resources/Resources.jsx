@@ -24,7 +24,7 @@ function Resources() {
   
   const { currentPage, goToPage } = useUrlPagination();
 
-  const categories = ["All", "Career Guides", "Roadmaps", "Playlists", "Notes & PYQs"];
+  const categories = ["All", "Career Guides", "Roadmaps", "Playlists", "Notes & PYQs", "Syllabus"];
 
   const fetchResourcesWithParams = async (page = 1, limit = 10) => {
     // This is now an internal function to call the context's fetch method

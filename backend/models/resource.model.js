@@ -6,13 +6,13 @@ const resourceSchema = new mongoose.Schema(
         description: { type: String, required: true, trim: true },
         link: {
             type: String,
-            required: true,
+            required: false,
             trim: true,
             match: [/^https?:\/\/.+/, "Please enter a valid URL"],
         },
         category: {
             type: String,
-            enum: ["Career Guides", "Roadmaps", "Playlists", "Notes & PYQs"],
+            enum: ["Career Guides", "Roadmaps", "Playlists", "Notes & PYQs", "Syllabus"],
             required: true,
         },
         tags: { type: [String], default: [] },

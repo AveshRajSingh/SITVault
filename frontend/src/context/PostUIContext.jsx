@@ -4,6 +4,7 @@ import { useAuth } from './AuthContext';
 import PostFormModal from '../components/Home/PostFormModal';
 import DeleteConfirmModal from '../components/Home/DeleteConfirmModal';
 import SharePostModal from '../components/Home/SharePostModal';
+import AskAIModal from '../components/Home/AskAIModal';
 
 const PostUIContext = createContext(null);
 
@@ -23,6 +24,7 @@ export const PostUIProvider = ({ children, onEditPost, onDeleteConfirm }) => {
   const [deletingPostId, setDeletingPostId] = useState(null);
   const [deleteLoading, setDeleteLoading] = useState(null);
   const [sharingPost, setSharingPost] = useState(null);
+  const [askingAIPost, setAskingAIPost] = useState(null);
 
   // Handlers registered by pages (latest registration wins)
   const editHandlerRef = useRef(null);
@@ -66,6 +68,10 @@ export const PostUIProvider = ({ children, onEditPost, onDeleteConfirm }) => {
     setSharingPost(post || null);
   }, []);
 
+  const requestAskAI = useCallback((post) => {
+    setAskingAIPost(post || null);
+  }, []);
+
   // Consumers can register confirm handlers for edit/delete
   const registerEditHandler = useCallback((fn) => {
     editHandlerRef.current = typeof fn === 'function' ? fn : null;
@@ -95,13 +101,15 @@ export const PostUIProvider = ({ children, onEditPost, onDeleteConfirm }) => {
       requestEdit,
       requestDelete,
       requestShare,
+      requestAskAI,
       setEditingPost,
       setDeletingPostId,
       setSharingPost,
+      setAskingAIPost,
       registerEditHandler,
       registerDeleteHandler,
     }),
-    [openMenuPostId, toggleMenu, closeMenu, canEditPost, canDeletePost, editingPost, deletingPostId, requestEdit, requestDelete, requestShare, registerEditHandler, registerDeleteHandler]
+    [openMenuPostId, toggleMenu, closeMenu, canEditPost, canDeletePost, editingPost, deletingPostId, requestEdit, requestDelete, requestShare, requestAskAI, registerEditHandler, registerDeleteHandler]
   );
 
   // Close any open menu on outside click
@@ -153,6 +161,13 @@ export const PostUIProvider = ({ children, onEditPost, onDeleteConfirm }) => {
         isOpen={!!sharingPost}
         onClose={() => setSharingPost(null)}
         post={sharingPost}
+      />
+
+      {/* Centralized Ask AI Modal */}
+      <AskAIModal
+        isOpen={!!askingAIPost}
+        onClose={() => setAskingAIPost(null)}
+        post={askingAIPost}
       />
     </PostUIContext.Provider>
   );

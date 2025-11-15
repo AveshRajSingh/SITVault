@@ -156,6 +156,20 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
                       Resources
                     </NavLink>
 
+                    <NavLink
+                      to="/syllabus"
+                      className={({ isActive }) =>
+                        `flex items-center px-4 py-3 text-lg ${
+                          isActive
+                            ? "text-orange-400 bg-orange-50 border-r-2 border-orange-400"
+                            : "text-gray-700 hover:text-orange-400 hover:bg-gray-50"
+                        } transition-all duration-200`
+                      }
+                      onClick={closeMenu}
+                    >
+                      Syllabus
+                    </NavLink>
+
                     
 
                     <NavLink
