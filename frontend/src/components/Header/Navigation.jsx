@@ -28,16 +28,7 @@ const Navigation = () => {
       >
         Resources
       </NavLink>
-      <NavLink
-        to="/Collaborate"
-        className={({ isActive }) =>
-          `${
-            isActive ? "text-orange-400" : "text-gray-600"
-          } hover:text-orange-400 transition-colors duration-300 ease-in-out`
-        }
-      >
-        Collaborate
-      </NavLink>
+      
       <NavLink
         to="/contact-admin"
         className={({ isActive }) =>

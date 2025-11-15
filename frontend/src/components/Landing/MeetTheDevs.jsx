@@ -1,5 +1,5 @@
 import React from "react";
-import { navneet, avesh } from "../../assets";
+import { navneet, avesh, alok,aprajita } from "../../assets";
 
 function MeetTheDevs() {
   const developers = [
@@ -19,6 +19,23 @@ function MeetTheDevs() {
       linkedin: "https://www.linkedin.com/in/avesh-web-dev/",
       instagram: "https://www.instagram.com/rajput_hu_bha1/",
     },
+    {
+      name: "Alok Kumar",
+      role: "Full Stack Developer",
+      image: alok,
+      github: "https://github.com/akv55",
+      linkedin: "www.linkedin.com/in/alok-kumar-3378a3257",
+      instagram: "https://www.instagram.com/its_alok_ku890"
+    }
+    ,
+    {
+      name:"Aprajita Singh",
+      role: "PPT Designer",
+      image: aprajita,
+      github: "https://github.com/aprajitasingh7091",
+      linkedin: "#",
+      instagram: "https://www.instagram.com/aprajita_singh_7667/"
+    }
     // Add more developers as needed
   ];
 

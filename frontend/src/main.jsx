@@ -16,7 +16,6 @@ import {
   Home,
   Resources,
   ContactAdmin,
-  Collaborate,
   UserProfile,
   AdminDashboard,
   SinglePostView,
@@ -41,7 +40,6 @@ const router = createBrowserRouter(
       <Route path="signup" element={<Signup />} />
       <Route path="verify-otp" element={<VerifyOTP />} />
       <Route path="Resources" element={<Resources />} />
-      <Route path="Collaborate" element={<Collaborate />} />
       <Route path="contact-admin" element={<ContactAdmin />} />
       <Route path="post/:postId" element={<SinglePostView />} />
       <Route path="profile/:username?" element={<UserProfile />} />

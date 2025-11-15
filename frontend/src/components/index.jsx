@@ -8,7 +8,6 @@ import ForgotPassword from "./Login/ForgotPassword";
 import Signup from "./Login/Signup";
 import VerifyOTP from "./Login/VerifyOTP";
 import Resources from "./Resources/Resources";
-import Collaborate from "./Collaborate/Collaborate";
 import ContactAdmin from "./ContactAdmin/ContactAdmin";
 import UserProfile from "./UserProfile/UserProfile";
 import AdminDashboard from "./AdminDashboard/AdminDashboard";
@@ -28,7 +27,6 @@ export {
   Signup,
   VerifyOTP,
   Resources,
-  Collaborate,
   ContactAdmin,
   UserProfile,
   AdminDashboard,

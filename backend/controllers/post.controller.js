@@ -5,6 +5,7 @@ import Comment from "../models/comment.model.js";
 import { uploadPostImageOnCloudinary, deleteFromCloudinary } from "../middlewares/cloudinary.js";
 import fs from "fs";
 import { promisify } from "util";
+import Notification from "../models/notification.model.js";
 
 const unlinkAsync = promisify(fs.unlink);
 
