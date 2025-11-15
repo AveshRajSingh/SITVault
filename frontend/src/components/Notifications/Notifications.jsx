@@ -50,11 +50,11 @@ const Notifications = () => {
       // Navigate based on notification type
       if (notification.message.includes('commented on your post')) {
         // Extract post info if available or navigate to home
-        navigate('/home');
+        navigate('/');
       } else if (notification.message.includes('replied to your comment')) {
-        navigate('/home');
+        navigate('/');
       } else {
-        navigate('/home');
+        navigate('/');
       }
     } catch (error) {
       console.error('Error marking notification as read:', error);

@@ -33,7 +33,7 @@ const NotificationBell = () => {
   return (
     <button
       onClick={handleClick}
-      className="relative p-2 rounded-lg hover:bg-gray-100 transition-colors"
+      className="relative p-2 rounded-lg hover:bg-gray-100 transition-colors ml-2"
       aria-label="Notifications"
     >
       <FiBell size={24} className="text-gray-600" />
