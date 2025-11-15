@@ -1,6 +1,8 @@
 import Comment from "../models/comment.model.js";
 import Post from "../models/post.model.js";
+import Notification from "../models/notification.model.js";
 import mongoose from "mongoose";
+import { sendPushNotification } from "../utilities/pushNotification.js";
 
 const createComment = async (req, res) => {
   try {
@@ -37,6 +39,25 @@ const createComment = async (req, res) => {
     const populatedComment = await Comment.findById(newComment._id)
       .select("-__v")
       .populate("user", "fullName username profilePicture");
+
+    // Send notification to post author if commenter is different
+    if (post.author.toString() !== userId.toString()) {
+      const notification = await Notification.create({
+        user: post.author,
+        message: `${req.user.username} commented on your post`
+      });
+
+      // Send push notification
+      await sendPushNotification(post.author.toString(), {
+        title: 'New Comment',
+        body: `${req.user.username} commented on your post`,
+        data: {
+          type: 'comment',
+          postId: postId,
+          commentId: newComment._id.toString()
+        }
+      });
+    }
 
     res.status(201).json({
       message: "Comment created successfully",
@@ -81,6 +102,26 @@ const createReply = async (req, res) => {
     const populatedReply = await Comment.findById(newReply._id)
       .select("-__v")
       .populate("user", "fullName username profilePicture");
+
+    // Send notification to parent comment author if replier is different
+    const parentCommentWithUser = await Comment.findById(commentId).populate('user');
+    if (parentCommentWithUser.user._id.toString() !== userId.toString()) {
+      const notification = await Notification.create({
+        user: parentCommentWithUser.user._id,
+        message: `${req.user.username} replied to your comment`
+      });
+
+      // Send push notification
+      await sendPushNotification(parentCommentWithUser.user._id.toString(), {
+        title: 'New Reply',
+        body: `${req.user.username} replied to your comment`,
+        data: {
+          type: 'reply',
+          commentId: commentId,
+          replyId: newReply._id.toString()
+        }
+      });
+    }
 
     res
       .status(201)

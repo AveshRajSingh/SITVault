@@ -9,9 +9,11 @@ import {
   FiLock, 
   FiAlertTriangle,
   FiArrowLeft,
-  FiSave
+  FiSave,
+  FiBell
 } from 'react-icons/fi';
 import Dialog from '../UI/Dialog';
+import NotificationSettings from './NotificationSettings';
 
 const Settings = () => {
   const { user, deleteAccount } = useAuth();
@@ -86,6 +88,18 @@ const Settings = () => {
                     >
                       <FiUser size={18} />
                       <span>Account</span>
+                    </button>
+
+                    <button
+                      onClick={() => setActiveTab('notifications')}
+                      className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-colors ${
+                        activeTab === 'notifications'
+                          ? 'bg-orange-100 text-orange-700 border border-orange-200'
+                          : 'text-gray-600 hover:bg-gray-100'
+                      }`}
+                    >
+                      <FiBell size={18} />
+                      <span>Notifications</span>
                     </button>
                     
                     <button
@@ -162,6 +176,10 @@ const Settings = () => {
                       </p>
                     </div>
                   </div>
+                )}
+
+                {activeTab === 'notifications' && (
+                  <NotificationSettings />
                 )}
 
                 {activeTab === 'danger' && (
