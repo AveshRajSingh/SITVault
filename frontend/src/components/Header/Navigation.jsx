@@ -8,7 +8,7 @@ const Navigation = () => {
 
   return (
     <div className="hidden md:flex gap-4 justify-center text-lg">
-      {/*<NavLink
+      <NavLink
         to="/home"
         className={({ isActive }) =>
           `${
@@ -17,7 +17,7 @@ const Navigation = () => {
         }
       >
         Home
-      </NavLink>*/}
+      </NavLink>
 
       <NavLink
         to="/resources"
@@ -30,7 +30,7 @@ const Navigation = () => {
         Resources
       </NavLink>
 
-      {/* <NavLink
+      <NavLink
         to="/contact-admin"
         className={({ isActive }) =>
           `${
@@ -39,7 +39,7 @@ const Navigation = () => {
         }
       > 
         Contact
-      </NavLink>*/}
+      </NavLink>
     </div>
   );
 };
