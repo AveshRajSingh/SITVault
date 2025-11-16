@@ -12,6 +12,7 @@ import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import Post from "../models/post.model.js";
 import Comment from "../models/comment.model.js";
+import retryOnWriteConflict from "../utilities/retryOnWriteConflict.js";
 
 const unlinkAsync = promisify(fs.unlink);
 
@@ -105,58 +106,57 @@ const sendOtpViaEmail = async (req, res) => {
 
     session.startTransaction();
 
-    const newUser = await User.create(
-      [
-        {
-          username,
-          fullName,
-          email,
-          password,
-          rollNo,
-          gender,
-          profilePicture: {
-            url: url,
-            public_id: public_id,
+    const result = await retryOnWriteConflict(async () => {
+      const newUser = await User.create(
+        [
+          {
+            username,
+            fullName,
+            email,
+            password,
+            rollNo,
+            gender,
+            profilePicture: {
+              url: url,
+              public_id: public_id,
+            },
           },
-        },
-      ],
-      { session }
-    );
-    if (!newUser) {
-      await session.abortTransaction();
-      return res.status(500).json({ message: "User creation failed" });
-    }
-    //now generate OTP
-    const otp = generateOtp();
-    if (!otp) {
-      await session.abortTransaction();
-      return res.status(500).json({ message: "OTP generation failed" });
-    }
-    const otpInstance = await Otp.create(
-      [
-        {
-          userId: newUser[0]._id,
-          purpose: "email-verification",
-          otpExpiresAt: Date.now() + 5 * 60 * 1000, // 5 minutes from now
-          otp: otp,
-          otpAttempts: 0,
-          resendAfter: Date.now() + 60 * 1000 * 2, // 2 minutes from now
-        },
-      ],
-      { session }
-    );
-    // Here you would send the OTP to the user's email
-    if (!otpInstance || otpInstance.length === 0) {
-      await session.abortTransaction();
-      return res.status(500).json({ message: "OTP creation failed" });
-    }
-    try {
-      await otpInstance[0].sendOtpViaEmail(email, otp);
-    } catch (error) {
-      console.error("Error sending OTP email:", error);
-      await session.abortTransaction();
-      return res.status(500).json({ message: "Failed to send OTP email" });
-    }
+        ],
+        { session }
+      );
+      if (!newUser) {
+        throw new Error("User creation failed");
+      }
+      //now generate OTP
+      const otp = generateOtp();
+      if (!otp) {
+        throw new Error("OTP generation failed");
+      }
+      const otpInstance = await Otp.create(
+        [
+          {
+            userId: newUser[0]._id,
+            purpose: "email-verification",
+            otpExpiresAt: Date.now() + 5 * 60 * 1000, // 5 minutes from now
+            otp: otp,
+            otpAttempts: 0,
+            resendAfter: Date.now() + 60 * 1000 * 2, // 2 minutes from now
+          },
+        ],
+        { session }
+      );
+      // Here you would send the OTP to the user's email
+      if (!otpInstance || otpInstance.length === 0) {
+        throw new Error("OTP creation failed");
+      }
+      try {
+        await otpInstance[0].sendOtpViaEmail(email, otp);
+      } catch (error) {
+        console.error("Error sending OTP email:", error);
+        throw new Error("Failed to send OTP email");
+      }
+      return { newUser, otpInstance, otp };
+    });
 
     await session.commitTransaction();
 
@@ -262,7 +262,9 @@ const resendOtp = async (req, res) => {
       otpInstance.resendAfter = nextResendAllowed;
       otpInstance.otpAttempts = 0; // Reset attempts when new OTP is generated
 
-      await otpInstance.save();
+      await retryOnWriteConflict(async () => {
+        await otpInstance.save();
+      });
 
       try {
         await otpInstance.sendOtpViaEmail(transporter, email, newOtp);
@@ -333,7 +335,9 @@ const loginUser = async (req, res) => {
           .json({message : "failed to generate refreshtoken"})
     }
     user.refreshToken = refreshToken;
-    await user.save({validateBeforeSave:false});
+    await retryOnWriteConflict(async () => {
+      await user.save({validateBeforeSave:false});
+    });
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
       secure: true, // since you’re on https in production
@@ -791,54 +795,54 @@ const sendOtpForResetPassword = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const otp = generateOtp();
+    await retryOnWriteConflict(async () => {
+      const otp = generateOtp();
 
-    const otpInstance = await Otp.create(
-      [
-        {
-          userId: existedUser._id,
-          purpose: "password-reset",
-          otpExpiresAt: Date.now() + 5 * 60 * 1000,
-          otp: otp,
-          otpAttempts: 0,
-          resendAfter: Date.now() + 2 * 60 * 1000,
-        },
-      ],
-      { session }
-    );
-
-    if (!otpInstance[0]) {
-      await session.abortTransaction();
-      return res.status(400).json({ message: "OTP not created" });
-    }
-
-    try {
-      await sendEmail(
-        existedUser.email,
-        "Your OTP for Re-set Password",
-        `
-        <!DOCTYPE html>
-        <html>
-        <body style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; color: #333;">
-          <div style="max-width: 500px; margin: auto; background: #fff; padding: 20px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
-            <h2 style="color: #007bff;">SITVault Verification Code</h2>
-            <p>Hi ${existedUser.name || "User"},</p>
-            <p>Your One-Time Password (OTP) is:</p>
-            <div style="font-size: 24px; font-weight: bold; letter-spacing: 2px; margin: 20px 0; color: #2c3e50;">
-              ${otp}
-            </div>
-            <p>This OTP is valid for the next 10 minutes. Do not share it with anyone.</p>
-            <p>Thanks,<br/>Team SITVault</p>
-          </div>
-        </body>
-        </html>
-        `
+      const otpInstance = await Otp.create(
+        [
+          {
+            userId: existedUser._id,
+            purpose: "password-reset",
+            otpExpiresAt: Date.now() + 5 * 60 * 1000,
+            otp: otp,
+            otpAttempts: 0,
+            resendAfter: Date.now() + 2 * 60 * 1000,
+          },
+        ],
+        { session }
       );
-    } catch (error) {
-      console.error("ERR while sending OTP in resetPassword:", error.message);
-      await session.abortTransaction();
-      return res.status(500).json({ message: "Failed to send OTP" });
-    }
+
+      if (!otpInstance[0]) {
+        throw new Error("OTP not created");
+      }
+
+      try {
+        await sendEmail(
+          existedUser.email,
+          "Your OTP for Re-set Password",
+          `
+          <!DOCTYPE html>
+          <html>
+          <body style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; color: #333;">
+            <div style="max-width: 500px; margin: auto; background: #fff; padding: 20px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
+              <h2 style="color: #007bff;">SITVault Verification Code</h2>
+              <p>Hi ${existedUser.name || "User"},</p>
+              <p>Your One-Time Password (OTP) is:</p>
+              <div style="font-size: 24px; font-weight: bold; letter-spacing: 2px; margin: 20px 0; color: #2c3e50;">
+                ${otp}
+              </div>
+              <p>This OTP is valid for the next 10 minutes. Do not share it with anyone.</p>
+              <p>Thanks,<br/>Team SITVault</p>
+            </div>
+          </body>
+          </html>
+          `
+        );
+      } catch (error) {
+        console.error("ERR while sending OTP in resetPassword:", error.message);
+        throw new Error("Failed to send OTP");
+      }
+    });
 
     await session.commitTransaction();
     return res.status(201).json({ message: "OTP sent successfully" });
