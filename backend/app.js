@@ -21,7 +21,7 @@ connectDB().then(() => {
 });
 
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: (process.env.CLIENT_URL || 'http://localhost:5173').replace(/\/$/, ''), // Remove trailing slash
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 }));
 
@@ -37,7 +37,7 @@ import { Server as SocketIOServer } from 'socket.io';
 const server = http.createServer(app);
 const io = new SocketIOServer(server, {
   cors: {
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin: (process.env.CLIENT_URL || 'http://localhost:5173').replace(/\/$/, ''), // Remove trailing slash
     credentials: true,
   }
 });
